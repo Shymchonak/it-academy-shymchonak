@@ -1,2 +1,5 @@
 # it-academy-shymchonak
-changed from feature branch
+
+Changes from newFeature branch
+
+some words from main branch
