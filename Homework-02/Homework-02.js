@@ -1,15 +1,20 @@
 const fs = require('fs-extra')
 
+//Directories
 const projectDir = '/Users/Slavva/Documents/it-academy/it-academy-shymchonak/Homework-02/'
 const firstWorkDirName = 'workdir-01/'
 const secondWorkDirName = 'workdir-02/'
 const thirdWorkDirName = 'workdir-03/'
-const fileName = 'Workfile.txt'
-const newFileName = 'NewWorkfile.txt'
 
 const firstWorkDirAddress = projectDir + firstWorkDirName
 const secondWorkDirAddress = projectDir + secondWorkDirName
 const thirdWorkDirAddress = projectDir + thirdWorkDirName
+
+
+//Files
+const fileName = 'Workfile.txt'
+const newFileName = 'NewWorkfile.txt'
+
 const fileAddress = projectDir + firstWorkDirName + fileName
 const newFileAddress = secondWorkDirAddress + fileName
 const fullFileAddressSrc = secondWorkDirName + fileName
