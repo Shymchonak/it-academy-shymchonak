@@ -1,61 +1,30 @@
 
 
-const minNumber = 1
-const maxNumber = 15
-const numberOfParts = 3
-let myArray = []
-let myDecArray = []
-let decSummm = 0
-let summ = 0
-let onePart = 0
-let numberOfTry = 1
-function randomNumber (min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
+const firstNumber = 831679
+const secondNumber = 349620
+let numberCounter = 0
+let numberAndPosCounter =0
+firstArray = Array.from(String(firstNumber))
+secondArray =Array.from(String(secondNumber))
 
-do  {
-    summ = 0
-    myArray= []
-    for (let i = 0; i< numberOfParts; i++){
-        onePart = randomNumber(minNumber, maxNumber - summ)
-        myArray[i] = onePart
-        console.log(myArray[i])
-        summ += myArray[i]
-        console.log(`eto summa ${summ}`)
+console.log(firstArray)
+console.log(secondArray)
 
-}
-    console.log(`******************************`)
-    console.log(`Number of tries: ${numberOfTry}`)
-    numberOfTry++
-} while (summ !== maxNumber)
+for (let i =0; i < firstArray.length; i++){
+    console.log(firstArray[i])
+    for(let j =0 ;j < secondArray.length; j++){
+        console.log (`*****************************`)
+        console.log(secondArray[j])
+        if (Number(firstArray[i]) === Number(secondArray[j])){
+            numberCounter += 1
+        }
+        if ((Number(firstArray[i]) === Number(secondArray[j])) && i === j){
+            numberAndPosCounter += 1
 
-console.log(String(myArray))
-
-
-
-//В десятичными числами
-
-function randomDecimalNumber (min, max) {
-    let decimal = Math.random() * ((max - min + 1) + min);
-    return decimal.toFixed(2)
-}
-
-do  {
-    decSumm = 0
-    myDecArray= []
-    for (let i = 0; i< numberOfParts; i++){
-        onePart = randomDecimalNumber(minNumber, maxNumber - decSummm)
-        myDecArray[i] = onePart
-        console.log(myDecArray[i])
-        decSummm += Number(myDecArray[i])
-        console.log(`eto summa ${decSummm}`)
+        }
 
     }
-    console.log(`******************************`)
-    console.log(`Number of tries: ${numberOfTry}`)
-    numberOfTry++
-} while (decSummm !== maxNumber)
 
-
-console.log(String(myDecArray))
-
+}
+console.log(`Total numbers are: ${numberCounter}`)
+console.log(`Total pos and values are: ${numberAndPosCounter}`)

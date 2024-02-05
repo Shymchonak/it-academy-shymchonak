@@ -1,8 +1,8 @@
 
 
 const minNumber = 1
-const maxNumber = 15
-const numberOfParts = 3
+const maxNumber = 150
+const numberOfParts = 10
 let myArray = []
 let summ = 0
 let onePart = 0
