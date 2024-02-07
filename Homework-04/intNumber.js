@@ -10,7 +10,6 @@ let numberOfTry = 1
 function randomNumber (min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
 do  {
     summ = 0
     myArray= []
