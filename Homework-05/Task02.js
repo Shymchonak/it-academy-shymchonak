@@ -4,6 +4,7 @@ let answer = ''
 function getHalfsSumms (number) {
     let firstSumm = 0
     let secondSumm = 0
+
     let firstHalf = number.slice(0, number.length / 2)
     let secondHalf = number.slice( number.length / 2, number.length)
     let firstArray = firstHalf.split('')
@@ -16,8 +17,8 @@ function getHalfsSumms (number) {
         answer = "yes" }
         else if (firstSumm < secondSumm) {
           answer = "No"
-        } else { answer ="They are equals"
-    }
+        } else if (firstSumm === secondSumm) { answer ="They are equals"
+    } else console.log('The number must be even!')
     return answer
 }
 
