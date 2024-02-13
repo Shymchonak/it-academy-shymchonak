@@ -1,5 +1,5 @@
 
-const number = '321123'
+const number = '32116'
 let answer = ''
 function getHalfsSumms (number) {
     let firstSumm = 0
@@ -13,12 +13,11 @@ function getHalfsSumms (number) {
        firstSumm += Number(firstArray[i])
        secondSumm += Number(secondArray[i])
     }
-    if (firstSumm > secondSumm){
+    if (firstSumm === secondSumm){
         answer = "yes" }
-        else if (firstSumm < secondSumm) {
+        else if (firstSumm < secondSumm || firstSumm > secondSumm) {
           answer = "No"
-        } else if (firstSumm === secondSumm) { answer ="They are equals"
-    } else console.log('The number must be even!')
+        } else console.log('The number must be even!')
     return answer
 }
 
