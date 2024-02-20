@@ -10,28 +10,53 @@ const maxSeconds = 5000
 function getRandomSeconds (min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-let promiseOne = new Promise( (result, reject) => {
-    setTimeout(result, getRandomSeconds(minSeconds, maxSeconds),'1')
+
+//С помощью Promise
+// let promiseOne = new Promise( (result, reject) => {
+//     setTimeout(result, getRandomSeconds(minSeconds, maxSeconds),'1')
+// })
+//     .catch((err) => {
+//         console.log(err)
+//     })
+//
+// let promiseTwo = new Promise( (result, reject) => {
+//     setTimeout(result, getRandomSeconds(minSeconds, maxSeconds),'2')
+// })
+//     .catch((err) => {
+//     console.log(err)
+// })
+//
+// let promiseThree = new Promise( (result, reject) => {
+//     setTimeout(result, getRandomSeconds(minSeconds, maxSeconds),'3')
+// })
+//     .catch((err) => {
+//     console.log(err)
+// })
+
+// Promise.race([promiseOne, promiseTwo, promiseThree]).then((value) =>{
+// console.log(value)
+// })
+
+
+// Через async/await
+function promiseOne (){
+    return  new Promise( (result, reject) => {
+        setTimeout(result, getRandomSeconds(minSeconds, maxSeconds),'1')
 })
-    .catch((err) => {
-        console.log(err)
+}
+function promiseTwo (){
+    return  new Promise( (result, reject) => {
+        setTimeout(result, getRandomSeconds(minSeconds, maxSeconds),'2')
     })
+}
+function promiseThree (){
+    return  new Promise( (result, reject) => {
+        setTimeout(result, getRandomSeconds(minSeconds, maxSeconds),'3')
+    })
+}
 
-let promiseTwo = new Promise( (result, reject) => {
-    setTimeout(result, getRandomSeconds(minSeconds, maxSeconds),'2')
-})
-    .catch((err) => {
-    console.log(err)
-})
+async function race() {
+    return console.log(await Promise.race([promiseOne(),promiseTwo(), promiseThree() ]))
+}
 
-let promiseThree = new Promise( (result, reject) => {
-    setTimeout(result, getRandomSeconds(minSeconds, maxSeconds),'3')
-})
-    .catch((err) => {
-    console.log(err)
-})
-
-Promise.race([promiseOne, promiseTwo, promiseThree]).then((value) =>{
-console.log(value)
-})
-
+race()
