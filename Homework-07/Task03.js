@@ -16,16 +16,11 @@ function getRandomNumber (min, max) {
 }
 
 
-function getNum() {
+function getNum(min, max, seconds) {
     return new Promise((result, reject) => {
-        setTimeout(result, milliSecondsFirst, getRandomNumber(minFirst, maxFirst))
+        setTimeout(result, seconds, getRandomNumber(min, max))
 
     })
-}
-function getNumTwo() {
-    return  new Promise( (result, reject) => {
-            setTimeout(result, milliSecondsSecond,getRandomNumber(minSecond, maxSecond))
-        })
 }
 
 
@@ -34,14 +29,11 @@ function getNumTwo() {
 // }
 
 async function getSummOfNumber (){
-    let firstsumm = await getNum()
-    let secondSumm = await getNumTwo()
-    console.log(firstsumm)
-    console.log(secondSumm)
-   let summ =await Promise.all([firstsumm, secondSumm])
-
-    return console.log(summ.reduce((curr, pre) => curr + pre, 0))
-   //  return console.log(firstsumm + secondSumm)
+    let firstSummand = await getNum(minFirst, maxFirst, milliSecondsFirst)
+    let secondSummand = await getNum(minSecond, maxSecond, milliSecondsSecond)
+    console.log(firstSummand)
+    console.log(secondSummand)
+    return console.log(firstSummand + secondSummand)
 }
 
 getSummOfNumber()
