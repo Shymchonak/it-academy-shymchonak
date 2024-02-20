@@ -24,9 +24,6 @@ function getNum(min, max, seconds) {
 }
 
 
-// async function printFunctionResult () {
-//     console.log(await getNum())
-// }
 
 async function getSummOfNumber (){
     let firstSummand = await getNum(minFirst, maxFirst, milliSecondsFirst)
