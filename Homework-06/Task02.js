@@ -13,11 +13,11 @@ const inputArray =  [ 'a', 'b', 'c']
 // }
 
 //2й Вариант
-function vtoroyVariant (position, whatinput){
+function vtoroyVariant (position, whatInput, whereInput){
 
-    sourceArray.splice(position,0,whatinput)
-    return  sourceArray.flat()
+    whereInput.splice(position,0,whatInput)
+    return  whereInput.flat()
 }
 //
 // console.log(perviVariant(2, sourceArray, inputArray))
-console.log(vtoroyVariant(2,inputArray))
+console.log(vtoroyVariant(2,inputArray, sourceArray))
