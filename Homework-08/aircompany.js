@@ -1,5 +1,5 @@
 
-class AirCompany {
+class Aircompany {
     constructor() {
         this.airPark = []
     }
@@ -9,7 +9,7 @@ class AirCompany {
 
     getLoadCapacity(){
         let capacity = 0
-        for(plane of this.airPark) {
+        for(let plane of this.airPark) {
             if(plane.planeCategory === 'Cargo'){
                 capacity += plane.loadCapacity
             }
@@ -18,7 +18,7 @@ class AirCompany {
     }
     getNumberOfSeats(){
         let seats = 0
-        for (plane of this.airPark){
+        for (let plane of this.airPark){
             if(plane.planeCategory === 'Passanger'){
                 seats += plane.numberOfPassengers
             }
@@ -26,6 +26,10 @@ class AirCompany {
         return seats
     }
 
+    sortByFlightRange() {
+       return this.airPark.sort((a,b) => a.flightRange > b.flightRange ? 1 : -1)
+    }
+
 }
 
-module.exports =new AirCompany();
+module.exports =new Aircompany();
