@@ -1,5 +1,5 @@
-const Plane = require('./Plane')
-const PassengerPlane = require('./passangerPlane')
+
+// const PassengerPlane = require('./passangerPlane')
 const CargoPlane = require('./CargoPlane')
 const AirPark = require('./AirCompany')
 

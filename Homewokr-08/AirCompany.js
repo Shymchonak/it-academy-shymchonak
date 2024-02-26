@@ -1,6 +1,3 @@
-const Plane = require('./Plane')
-const PassengerPlane = require('./passangerPlane')
-const CargoPlane = require('./CargoPlane')
 
 class AirCompany {
     constructor() {
@@ -31,4 +28,4 @@ class AirCompany {
 
 }
 
-module.exports = AirCompany
+module.exports =new AirCompany();

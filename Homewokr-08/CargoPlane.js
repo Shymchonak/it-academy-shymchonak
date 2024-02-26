@@ -9,4 +9,4 @@ class CargoPlane extends Plane {
 
 
 
-module.exoports = CargoPlane
+module.exoports = CargoPlane;
