@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "usa": "usa-url",
+    "uk": "uk-url"
+  },
+  "qs1": {
+    "usa": "usa-url-qa1",
+    "uk": "uk-url-qa1"
+  }
+}
