@@ -30,6 +30,20 @@ class Aircompany {
        return this.airPark.sort((a,b) => a.flightRange > b.flightRange ? 1 : -1)
     }
 
+    sortByCapacityHigher(lowCapacity, highCapacity = 10000000000000) {
+        return this.airPark.filter(plane => plane.loadCapacity <= highCapacity && plane.loadCapacity >= lowCapacity)
+    }
+    sortByCapacityLower(highCapacity , lowCapacity = 0) {
+        return this.airPark.filter(plane => plane.loadCapacity <= highCapacity && plane.loadCapacity >= lowCapacity)
+    }
+
+    sortByFlightRangeHigher(lowFlightRange, highFlightRange = 100000000000){
+        return this.airPark.filter(plane => plane.loadCapacity <= highFlightRange && plane.loadCapacity >= lowFlightRange)
+    }
+    sortbyFlightRangeLower(highFlightRange, lowFlightRange = 0){
+        return this.airPark.filter(plane => plane.loadCapacity <= highFlightRange && plane.loadCapacity >= lowFlightRange)
+    }
+
 }
 
 module.exports =new Aircompany();

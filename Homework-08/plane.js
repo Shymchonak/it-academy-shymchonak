@@ -1,7 +1,7 @@
 
 
 
-class Plane {
+class FlyingMachine {
     constructor(planeCategory,flightRange) {
         this.planeCategory = planeCategory;
         this.flightRange = flightRange;
@@ -10,4 +10,4 @@ class Plane {
 
 }
 
-module.exports = Plane;
+module.exports = FlyingMachine;
