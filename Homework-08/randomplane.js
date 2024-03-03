@@ -2,7 +2,7 @@
 const PassengerPlane = require('./passangerplane')
 const CargoPlane = require('./cargoplane')
 const Helicopter = require('./helicopter')
-const airpark = require('./aircompany')
+const Aircompany = require('./aircompany')
 
 const numberOfPassengersArray = [100, 200, 300, 500, 600]
 const planeCategoryArray = ['Passenger', 'Cargo', 'Helicopter']
@@ -17,31 +17,33 @@ function randomElement(array){
 }
 
 
-
-function getRandomPlane (){
-  let element = randomElement(planeCategoryArray)
-    if (element === 'Passenger'){
-        let plane = new PassengerPlane(element,
-            randomElement(flightRangeArray), randomElement(numberOfPassengersArray))
-        return plane
-    }
-    if (element === 'Cargo'){
-        let plane = new CargoPlane(element,
-            randomElement(flightRangeArray), randomElement(loadCapacityArray))
-        return plane
-    }
-    if (element === 'Helicopter') {
-        let plane = new Helicopter(element,
-            randomElement(flightRangeArray), randomElement(numberOfPassengersArray), randomElement(loadCapacityArray))
-        return plane
+class RandomPlane {
+    createRandomPlane(category) {
+        if (category === 'Passenger') {
+            let plane = new PassengerPlane(category,
+                randomElement(flightRangeArray), randomElement(numberOfPassengersArray))
+            return plane
+        }
+        if (category === 'Cargo') {
+            let plane = new CargoPlane(category,
+                randomElement(flightRangeArray), randomElement(loadCapacityArray))
+            return plane
+        }
+        if (category === 'Helicopter') {
+            let plane = new Helicopter(category,
+                randomElement(flightRangeArray), randomElement(numberOfPassengersArray), randomElement(loadCapacityArray))
+            return plane
+        }
     }
 }
 
-function fillAirCompanyByRandonPlanes(){
+function fillAirCompanyByRandonPlanes(companyName = new Aircompany()){
     for(let i = 0; i < numberOfPlanes; i++){
-    airpark.addPlane(getRandomPlane())
+        let category = randomElement(planeCategoryArray)
+        let newPlane = new RandomPlane
+        companyName.addPlane(newPlane.createRandomPlane(category))
     }
-    return airpark
+    return companyName
 }
 
-module.exports = {getRandomPlane, fillAirCompanyByRandonPlanes}
+module.exports =  fillAirCompanyByRandonPlanes
