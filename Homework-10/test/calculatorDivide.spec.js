@@ -19,17 +19,18 @@ describe('Test calculator function: divide', function () {
         // {name: 'With String',dividend: 'a', divider: 5,result:NaN}
     ].forEach((testData) => {
         it(`Test divide: ${testData.name}`, async () => {
-            const result = calculations.divide(testData.dividend, testData.divider)
-            expect(result).to.equal(testData.result)
-        })
-    })
+            const result = calculations.divide(testData.dividend, testData.divider);
+            expect(result).to.equal(testData.result);
+        });
+    });
     it(`Test subtraction: More than 2 arguments`, async () => {
-        const result = calculations.divide(20, 10, 10)
-        expect(result).to.equal(2)
-    })
+        const result = calculations.divide(20, 10, 10);
+        expect(result).to.equal(2);
+    });
     // Тест без аргементов падает хотя пишет "expected NaN to equal NaN"
     // it(`Test divide: Without arguments`, async () => {
-    //     const result = calculations.divide()
-    //     expect(result).to.equal(NaN)
-    // })
-})
+    //     const result = calculations.divide();
+    //     expect(result).to.equal(NaN);
+    // });
+});
+

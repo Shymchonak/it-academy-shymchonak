@@ -17,9 +17,8 @@ describe('Test calculator function: add', function () {
         { name: 'With String', value: ['a', 2], result: '0a2' }
     ].forEach((testData) => {
         it(`Test addition: ${testData.name}`, async () => {
-            const result = calculations.add(...testData.value)
-            expect(result).to.equal(testData.result)
-        })
-    })
-
-})
+            const result = calculations.add(...testData.value);
+            expect(result).to.equal(testData.result);
+        });
+    });
+});

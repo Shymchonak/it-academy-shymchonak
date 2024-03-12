@@ -15,17 +15,17 @@ describe('Test calculator function: exponentiation', function () {
         // {name: 'With String',value: 'a',result:NaN}
     ].forEach((testData) => {
         it(`Test exponentiation: ${testData.name}`, async () => {
-            const result = calculations.exponentiation(testData.value)
-            expect(result).to.equal(testData.result)
-        })
-    })
+            const result = calculations.exponentiation(testData.value);
+            expect(result).to.equal(testData.result);
+        });
+    });
     it(`Test exponentiation: More than 2 arguments`, async () => {
-        const result = calculations.exponentiation(20, 10, 10)
-        expect(result).to.equal(400)
-    })
+        const result = calculations.exponentiation(20, 10, 10);
+        expect(result).to.equal(400);
+    });
     // Тест без аргементов падает хотя пишет "expected NaN to equal NaN"
     // it(`Test exponentiation: Without arguments`, async () => {
-    //     const result = calculations.divide()
-    //     expect(result).to.equal(NaN)
-    // })
-})
+    //     const result = calculations.exponentiation();
+    //     expect(result).to.equal(NaN);
+    // });
+});
