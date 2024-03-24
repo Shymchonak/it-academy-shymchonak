@@ -4,7 +4,7 @@ name: Run tests in CI
 on:
   push:
     branches:
-      - 'Homework-10'
+      - 'main'
   pull_request:
     branches:
       -'main'
