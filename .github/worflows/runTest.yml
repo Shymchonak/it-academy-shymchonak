@@ -1,0 +1,30 @@
+name: Run tests in CI
+
+
+on:
+  push:
+    branches:
+      - 'Homework-10'
+  pull_request:
+    branches:
+      -'main'
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version 20.9.0
+      - name: Folder
+        run: cd ./Homework-10
+      - name: Dependencies
+        working_directory: ./Homework-10
+        run: npm i
+      - name: Run tests
+        working_directory: ./Homework-10
+        run: npm test
