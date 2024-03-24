@@ -33,4 +33,3 @@ describe('Test calculator function: divide', function () {
     //     expect(result).to.equal(NaN);
     // });
 });
-
