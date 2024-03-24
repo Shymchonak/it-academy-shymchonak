@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node calc.test.js",
     "test": "mocha"
   },
   "author": "",
