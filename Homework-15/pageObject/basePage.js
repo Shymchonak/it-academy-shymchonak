@@ -4,6 +4,10 @@ class Base {
         await browser.url(url)
     }
 
+    async switchTabByNumber(number) {
+        const handles = await browser.getWindowHandles();
+        await browser.switchWindow(handles[number]);
+    }
 
 }
 

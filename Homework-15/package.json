@@ -17,5 +17,8 @@
     "@wdio/mocha-framework": "^8.35.0",
     "@wdio/spec-reporter": "^8.32.4",
     "@wdio/visual-service": "^4.1.0"
+  },
+  "dependencies": {
+    "eslint": "^9.0.0"
   }
 }
