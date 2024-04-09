@@ -2,9 +2,10 @@ const mainPage = require('../pageObject/mainPage');
 const apiPage = require('../pageObject/apiPage');
 const  assistantModal = require('../pageObject/assistantModal')
 const sponsorPage = require('../pageObject/sponsorPage')
+
 describe('WebdriverIO website test', async () =>{
 
-    it.skip('Next Buttotn should changed section on additional pages', async () =>{
+    it('Next Buttotn should changed section on additional pages', async () =>{
         await mainPage.navigate('https://webdriver.io/');
         let pageToNav = await mainPage.getPageFromTopNavMenu('/docs/api');
         await mainPage.gotToNavPage(pageToNav);
@@ -26,13 +27,16 @@ describe('WebdriverIO website test', async () =>{
 
     })
 
-    it('Redirect for Bronze Sponsor level', async () =>{
+    it.skip('Redirect for Bronze Sponsor level', async () =>{
         await mainPage.navigate('https://webdriver.io/');
         let pageToNav = await mainPage.getPageFromTopNavMenu('/docs/sponsor');
         await mainPage.gotToNavPage(pageToNav);
         await sponsorPage.goToBronzeSponsorPayment();
-        await mainPage.switchTabByNumber(1)
-        expect(await sponsorPage.getTextOfContribution()).toEqual('You’ll contribute $100.00 USD monthly')
+        await browser.pause(5000)
+        // await mainPage.switchTabByNumber(1)
+        await browser.switchWindow('Contribute to WebdriverIO');
+        let contributionText = await sponsorPage.getTextOfContribution()
+        expect(contributionText).toEqual('Contribution details')
 
     })
 

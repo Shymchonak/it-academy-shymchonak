@@ -10,11 +10,12 @@ class SponsorPage {
     }
 
     get contributionOnRedirectedPage(){
-        return $('.Grid__Box-sc-1b416rc-0.ixvXjn')
+        return $('.Text__P-sc-1gblpeb-0-h4.cRpRXv')
     }
     async getTextOfContribution(){
-        await this.contributionOnRedirectedPage.waitForDisplayed();
+
         await this.contributionOnRedirectedPage.getText();
+
     }
 }
 

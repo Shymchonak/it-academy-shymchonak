@@ -26,7 +26,7 @@ class ApiPage {
     }
     async getTextOfPageTitle(){
         await this.titleOfPage.waitForDisplayed();
-        await this.titleOfPage.click();
+        await this.titleOfPage.getText();
     }
 }
 
