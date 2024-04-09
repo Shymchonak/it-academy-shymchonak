@@ -10,6 +10,10 @@ class ApiPage {
     get buttomButtonNextForClick() {
         return $(`.pagination-nav__link.pagination-nav__link--next`);
     }
+    async getbuttomButtonText (){
+        await this.buttomButtonNextForText.waitForDisplayed();
+        return await this.buttomButtonNextForText.getText();
+    }
 
     async gotToNextPage (){
         await this.buttomButtonNextForClick.waitForDisplayed();
@@ -18,6 +22,10 @@ class ApiPage {
 
     get titleOfPage(){
         return $(`.theme-doc-markdown.markdown h1`)
+    }
+    async getTitleOfPageText (){
+        await this.titleOfPage.waitForDisplayed();
+        return await this.titleOfPage.getText();
     }
 
 }

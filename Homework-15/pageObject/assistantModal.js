@@ -22,9 +22,9 @@ class AssistanModal {
 
     //С методом не хочет рабоать, а на прмую с локатора - рабоатет, не смог разобраться
     // метод возвращает UNDEFINED
-    // async expampleRequestStillDisplayed(){
-    //     await this.gerenatedAnswer.isDisplayedInViewport();
-    // }
+    async expampleRequestStillDisplayed(){
+       return await this.gerenatedAnswer.isDisplayed();
+    }
 }
 
 module.exports = new AssistanModal();

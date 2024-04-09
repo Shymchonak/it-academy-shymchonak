@@ -16,11 +16,11 @@ class SponsorPage {
 
     //С методом не хочет рабоать, а на прмую с локатора - рабоатет, не смог разобраться
     // метод возвращает UNDEFINED
-    // async getTextOfContribution(){
-    //
-    //     await this.contributionOnRedirectedPage.getText();
-    //
-    // }
+    async getTextOfContribution(){
+        await this.contributionOnRedirectedPage.waitForDisplayed();
+       return await this.contributionOnRedirectedPage.getText();
+
+    }
 }
 
 module.exports = new SponsorPage();
