@@ -10,6 +10,10 @@ class Base {
     //     await browser.switchWindow(handles[number]);
     // }
 
+    async switchBrowserTab(title){
+        await browser.switchWindow(title);
+    }
+
 }
 
 module.exports = Base;

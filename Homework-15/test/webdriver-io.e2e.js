@@ -33,7 +33,7 @@ describe('WebdriverIO website test', async () =>{
         await browser.pause(5000)
         //не находит страницу по методу
         // await mainPage.switchTabByNumber(1)
-        await browser.switchWindow('Contribute to WebdriverIO');
+        await mainPage.switchBrowserTab('Contribute to WebdriverIO');
 
         expect(await sponsorPage.getTextOfContribution()).toEqual('You’ll contribute $100.00 USD monthly.')
 
