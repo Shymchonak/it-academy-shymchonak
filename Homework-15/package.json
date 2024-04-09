@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "wdio": "wdio run ./wdio.conf.js"
+    "wdio": "npm run clear-folders && wdio run ./wdio.conf.js && npm run allure_open",
+    "allure_open": "npx allure generate && npx allure open",
+    "clear-folders": "rimraf \"allure-report\" \"allure-results\""
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,8 @@
     "eslint": "^9.0.0"
   },
   "dependencies": {
-    "eslint-config-airbnb-base": "^15.0.0"
+    "allure-commandline": "^2.27.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "rimraf": "^5.0.5"
   }
 }
