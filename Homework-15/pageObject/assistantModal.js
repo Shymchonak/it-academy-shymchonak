@@ -19,9 +19,12 @@ class AssistanModal {
     get gerenatedAnswer(){
         return $('.ms-justify-center:nth-child(4)')
     }
-    async expampleRequestStillDisplayed(){
-        await this.gerenatedAnswer.isDisplayedInViewport();
-    }
+
+    //С методом не хочет рабоать, а на прмую с локатора - рабоатет, не смог разобраться
+    // метод возвращает UNDEFINED
+    // async expampleRequestStillDisplayed(){
+    //     await this.gerenatedAnswer.isDisplayedInViewport();
+    // }
 }
 
 module.exports = new AssistanModal();

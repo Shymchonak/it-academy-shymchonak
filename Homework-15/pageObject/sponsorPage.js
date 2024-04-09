@@ -10,13 +10,17 @@ class SponsorPage {
     }
 
     get contributionOnRedirectedPage(){
-        return $('.Text__P-sc-1gblpeb-0-h4.cRpRXv')
+        return $('.Grid__Box-sc-1b416rc-0.ixvXjn')
     }
-    async getTextOfContribution(){
 
-        await this.contributionOnRedirectedPage.getText();
 
-    }
+    //С методом не хочет рабоать, а на прмую с локатора - рабоатет, не смог разобраться
+    // метод возвращает UNDEFINED
+    // async getTextOfContribution(){
+    //
+    //     await this.contributionOnRedirectedPage.getText();
+    //
+    // }
 }
 
 module.exports = new SponsorPage();

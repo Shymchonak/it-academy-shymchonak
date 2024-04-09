@@ -4,10 +4,11 @@ class Base {
         await browser.url(url)
     }
 
-    async switchTabByNumber(number) {
-        const handles = await browser.getWindowHandles();
-        await browser.switchWindow(handles[number]);
-    }
+    //Не видит новой кладки по этому методу
+    // async switchTabByNumber(number) {
+    //     const handles = await browser.getWindowHandles();
+    //     await browser.switchWindow(handles[number]);
+    // }
 
 }
 

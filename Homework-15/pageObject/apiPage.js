@@ -2,32 +2,24 @@
 
 class ApiPage {
 
-    async getRightNavMenuSection(section){
-        return $(`.menu__link[href="/docs/api/${section}"] `)
+
+    get buttomButtonNextForText(){
+        return $(`.pagination-nav__link.pagination-nav__link--next .pagination-nav__label`);
+
     }
-    async gotoSectionFromRightNavMenu (section){
-       await section.waitForDisplayed();
-        await section.click;
-    }
-    get buttomButtonNext(){
-        return $(`.pagination-nav__link--next`);
-    }
-    async getTextFromButtomNext(){
-        await this.buttomButtonNext.getText();
+    get buttomButtonNextForClick() {
+        return $(`.pagination-nav__link.pagination-nav__link--next`);
     }
 
     async gotToNextPage (){
-        await this.buttomButtonNext.waitForDisplayed();
-        await this.buttomButtonNext.click();
+        await this.buttomButtonNextForClick.waitForDisplayed();
+        await this.buttomButtonNextForClick.click();
     }
 
     get titleOfPage(){
         return $(`.theme-doc-markdown.markdown h1`)
     }
-    async getTextOfPageTitle(){
-        await this.titleOfPage.waitForDisplayed();
-        await this.titleOfPage.getText();
-    }
+
 }
 
 module.exports = new ApiPage();
