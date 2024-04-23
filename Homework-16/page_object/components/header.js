@@ -12,6 +12,14 @@ class Header extends Base {
     get docsPageButton(){
         return this.page.locator('//*[contains(@class,"navbar__item navbar__link") and text()=\'Docs\']')
     }
+
+    get searchButton(){
+        return this.page.locator('//button[@class="DocSearch DocSearch-Button"]')
+    }
+
+    async openSearchWindow(){
+        await (await this.searchButton).click();
+    }
     async goToDocsPage(){
         await (await this.docsPageButton).click();
     }
