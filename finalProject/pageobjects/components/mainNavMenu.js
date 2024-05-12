@@ -11,8 +11,6 @@ class MainNaveMenu extends Base {
     }
 
 
-
-
     getmainCategoriesOfProducts(numberOfCategory){
         return $(`.swiper-slide.swiper-slide-visible[aria-label="${numberOfCategory} / 11"]`)
     }

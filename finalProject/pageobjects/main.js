@@ -18,12 +18,18 @@ class MainPage extends Base {
 
     }
 
-
-
     async addProductToCart(numberOfCategory){
         await mainNavMenu.getmainCategoriesOfProducts(numberOfCategory).click();
         await this.openModalToaddProductToCartButton(1);
         await this.goToCartButtonInModal.click();
+
+    }
+    async addTheSameProductToCartTwice(numberOfCategory){
+        await mainNavMenu.getmainCategoriesOfProducts(numberOfCategory).click();
+        await this.openModalToaddProductToCartButton(1);
+        await this.goToCartButtonInModal.click();
+        await mainNavMenu.getmainCategoriesOfProducts(numberOfCategory).click();
+        await this.openModalToaddProductToCartButton(1);
 
     }
 
@@ -35,15 +41,15 @@ class MainPage extends Base {
         return $('.js-drop-select .n-item__icon.ic-compare');
     }
 
-    get removeProductFromCompareModalButton(){
+    get removeProductFromCompareModalButton() {
         return  $('.btn.btn--clear.ic-trash');
     }
     get thereIsNothingToCompareNotification(){
         return $$('.h-drop__content')[0];
     }
 
-    get addTheSameProductToCartTwice (){
-        return ('//div[text()="Товар уже в корзине, вы хотите добавить еще одну единицу товара?"]')
+    get addTheSameProductToCartTwiceTitle(){
+        return $('//div[text()="Товар уже в корзине, вы хотите добавить еще одну единицу товара?"]')
     }
 
 }

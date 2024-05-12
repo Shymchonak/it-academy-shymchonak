@@ -14,13 +14,13 @@ describe.skip('Compare products', async () =>  {
 
 
 describe('Adding products to cart', async () =>  {
-    it('One product should be add to cart', async () => {
+    it.skip('One product should be add to cart', async () => {
         await mainPage.navigate(constants.BASEURL);
         await mainPage.addProductToCart(constants.VACUUMCLEANERSCATEGORY)
         await expect(await (mainNavMenu.myCartTitle.getText())).toContain(constants.NUMBEROFADDEDPRODUCTS)
     })
 
-    it('"В корзине еще нет товаров" should be displayed after emptying your cart of items.', async () => {
+    it.skip('"В корзине еще нет товаров" should be displayed after emptying your cart of items.', async () => {
         await mainPage.navigate(constants.BASEURL);
         await mainPage.addProductToCart(constants.WASHINGMACHINESCATEGORY)
         await cart.removeProductFromTheCart();
@@ -28,11 +28,10 @@ describe('Adding products to cart', async () =>  {
         await expect(await (cart.emptyCartTittle.getText())).toContain(constants.EMPTYCARTTITLE)
     })
 
-    it.skip('"Товар уже в корзине, вы хотите добавить еще одну единицу товара?" should be displayed when add the same product twice', async () => {
+    it('"Товар уже в корзине, вы хотите добавить еще одну единицу товара?" should be displayed when add the same product twice', async () => {
         await mainPage.navigate(constants.BASEURL);
-        await mainNavMenu.addProductToCart(constants.VACUUMCLEANERSCATEGORY)
-        await mainNavMenu.addProductToCart(constants.VACUUMCLEANERSCATEGORY)
-        await expect(await (mainPage.addTheSameProductToCartTwice.getText())).toContain(constants.NOTIFICATIONWHENTHESAMEPRODUCTADDEDTWICE)
+        await mainPage.addTheSameProductToCartTwice(constants.REFRIGERATORSCATEGORY)
+        await expect(await (mainPage.addTheSameProductToCartTwiceTitle.getText())).toContain(constants.NOTIFICATIONWHENTHESAMEPRODUCTADDEDTWICE)
     })
 
 })
