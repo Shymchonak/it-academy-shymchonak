@@ -19,12 +19,20 @@ class LoginPage extends Base {
         return $('//span[text()="Некорректный ввод"]')
     }
 
+    get modalPopupLogin(){
+        return $('.modal-popup.modal-login')
+    }
+
+    get titleFfModalPopupLogin(){
+        return $('//div[@class="modal-popup modal-login"]//div[@class="modal-popup-heading" and text()="Вход в аккаунт"]')
+    }
+
     async loginWithCredentials(login, password){
-        await header.enterButton.click();
-        await this.loginField.setValue(login);
-        await this.passwordFiled.setValue(password);
-        await this.loginButton.click();
-        await waitForElementIsDisplayed(this.warningNotification)
+        await this.baseClick(header.enterButton);
+        await this.baseSetValue(this.loginField, login);
+        await this.baseSetValue(this.passwordFiled, password);
+        await this.baseClick(this.loginButton);
+
     }
 }
 

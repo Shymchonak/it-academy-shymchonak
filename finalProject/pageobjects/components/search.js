@@ -22,11 +22,18 @@ class Search extends Base {
     }
 
     async searchByKeyWord(text){
-        await this.searchField.click();
-        await this.secondSearchField.click();
-        await this.secondSearchField.setValue(text)
-        await this.submitSearchButton.click();
+        await this.baseClick(this.searchField);
+        await this.baseClick(this.secondSearchField);
+        await this.baseSetValue(this.secondSearchField, text)
+        await this.baseClick(this.submitSearchButton);
     }
+
+    get titileOfSerachResult(){
+        return $$('.c-text')[0]
+    }
+
+
+
 }
 
 module.exports = new Search();

@@ -1,37 +1,74 @@
 
 const Base = require('../pageobjects/base')
 const mainNavMenu = require('../pageobjects/components/mainNavMenu')
+const {waitForElementIsDisplayed} = require("../helpers/waiter");
+const loginPage = require("./loginPage");
+const constants = require("../testdata/Constants");
+
 class MainPage extends Base {
 
     async addProdutToCompare(numberOFproduct){
-        await $$('.btn.btn--clear[title="В сравнение"]')[numberOFproduct].click();
+        await this.baseClick($$('.btn.btn--clear[title="В сравнение"]')[numberOFproduct]);
     }
-    async openModalToaddProductToCartButton(numberofProduct){
-        await $$('.btn.c-cart.ec-add-to-cart')[numberofProduct].click();
+    async openModalToaddProductToCartButton(numberofProduct, ){
+        await this.baseClick($$('.btn.c-cart.ec-add-to-cart')[numberofProduct]);
     }
 
-    async   addProductForComparing(numberOfCategory){
-        await mainNavMenu.getmainCategoriesOfProducts(numberOfCategory).click();
+    async   addProductForComparingAndRemoveIt(numberOfCategory){
+        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
         await this.addProdutToCompare(0);
-        await this.compareModalButton.click();
-        await this.removeProductFromCompareModalButton.click();
+        await this.baseClick(this.compareModalButton);
+        await this.baseClick(this.removeProductFromCompareModalButton);
 
     }
 
     async addProductToCart(numberOfCategory){
-        await mainNavMenu.getmainCategoriesOfProducts(numberOfCategory).click();
+        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
         await this.openModalToaddProductToCartButton(1);
-        await this.goToCartButtonInModal.click();
+        await this.baseClick(this.goToCartButtonInModal);
 
     }
     async addTheSameProductToCartTwice(numberOfCategory){
-        await mainNavMenu.getmainCategoriesOfProducts(numberOfCategory).click();
+        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
         await this.openModalToaddProductToCartButton(1);
-        await this.goToCartButtonInModal.click();
-        await mainNavMenu.getmainCategoriesOfProducts(numberOfCategory).click();
+        await this.baseClick(this.goToCartButtonInModal);
+        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
         await this.openModalToaddProductToCartButton(1);
 
     }
+
+    async addProductToFavorites(numberOfCategory){
+        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
+        await this.baseClick(this.buttonAddToFavorites);
+        waitForElementIsDisplayed(loginPage.modalPopupLogin)
+    }
+
+
+    async   addSPairOfProdusctsForComparing(numberOfCategory, firstProduct, secondProduct){
+        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
+        await this.addProdutToCompare(firstProduct);
+        await this.addProdutToCompare(secondProduct);
+        await this.baseClick(this.compareModalButton);
+        await this.baseClick(mainNavMenu.buttonToOpenComparePage);
+
+    }
+
+    async selectAvaialbePromotion(numberOfCategory){
+        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory))
+        await this.baseClick(this.promotionCategory(constants.INSTALLMENTPLAPROMOTIONCATEGORY))
+        await browser.scroll(0, 400)
+        waitForElementIsDisplayed(this.titleOfInstallmentPlan)
+    }
+
+
+    get titleOfInstallmentPlan(){
+        return $$('.c-payment')[1]
+    }
+
+    promotionCategory(promotion){
+        return $$('.item-box')[promotion];
+    }
+
 
     get goToCartButtonInModal(){
         return $$('.btn.btn--block')[14]
@@ -50,6 +87,16 @@ class MainPage extends Base {
 
     get addTheSameProductToCartTwiceTitle(){
         return $('//div[text()="Товар уже в корзине, вы хотите добавить еще одну единицу товара?"]')
+    }
+
+    get buttonAddToFavorites(){
+        return  $$('.ic-favorite')[3]
+    }
+    get titleOfCompareTab(){
+        return $('.nav-item.active')
+    }
+    get titleOfPersonalArea(){
+        return $('//div[@class="section-heading__title" and text()="Личный кабинет"]');
     }
 
 }

@@ -15,6 +15,9 @@ class MainNaveMenu extends Base {
         return $(`.swiper-slide.swiper-slide-visible[aria-label="${numberOfCategory} / 11"]`)
     }
 
+    get buttonToOpenComparePage(){
+        return $('//a[@class="btn btn--index btn--block"]')
+    }
 
 }
 

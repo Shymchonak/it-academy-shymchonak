@@ -9,7 +9,8 @@ exports.config = {
     exclude: [
         './test/specs/**/test.e2e.js',
         './test/**/loginPage.e2e.js',
-        './test/**/search.e2e.js'
+        //'./test/**/search.e2e.js',
+        './test/**/products.e2e.js'
     ],
 
     maxInstances: 10,

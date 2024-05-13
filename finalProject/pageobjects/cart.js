@@ -11,7 +11,7 @@ class Cart extends Base {
         return $('.section-product-heading__link')
     }
     async removeProductFromTheCart(){
-        this.buttonToRemoveAddedProducts.click();
+        this.baseSetValue(this.buttonToRemoveAddedProducts);
     }
 
 
