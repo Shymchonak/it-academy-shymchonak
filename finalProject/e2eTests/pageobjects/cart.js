@@ -1,4 +1,4 @@
-const Base = require('../pageobjects/base')
+const Base = require('./base')
 
 class Cart extends Base {
 

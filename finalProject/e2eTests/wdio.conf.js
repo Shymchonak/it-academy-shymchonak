@@ -3,13 +3,13 @@ exports.config = {
     runner: 'local',
 
     specs: [
-        './e2eTests/**/*.js'
+        './tests/**/*.js'
     ],
 
     exclude: [
-        './e2eTests/**/loginPage.e2e.js',
-        './e2eTests/**/search.e2e.js',
-        //'./e2eTests/**/products.e2e.js'
+        './tests/**/loginPage.e2e.js',
+        './tests/**/search.e2e.js',
+        //'./tests/**/products.e2e.js'
     ],
 
     maxInstances: 10,

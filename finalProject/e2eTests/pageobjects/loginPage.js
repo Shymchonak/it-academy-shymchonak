@@ -1,5 +1,5 @@
-const Base = require('../pageobjects/base')
-const header = require('../pageobjects/components/header')
+const Base = require('./base')
+const header = require('./components/header')
 const { waitForElementIsDisplayed } = require('../helpers/waiter')
 
 

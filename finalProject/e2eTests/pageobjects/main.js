@@ -1,6 +1,6 @@
 
-const Base = require('../pageobjects/base')
-const mainNavMenu = require('../pageobjects/components/mainNavMenu')
+const Base = require('./base')
+const mainNavMenu = require('./components/mainNavMenu')
 const {waitForElementIsDisplayed} = require("../helpers/waiter");
 const loginPage = require("./loginPage");
 const constants = require("../e2eTestData/Constants");
