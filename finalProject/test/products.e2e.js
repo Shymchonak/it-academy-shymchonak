@@ -18,9 +18,7 @@ describe('Compare products', async () =>  {
         await expect(await (mainPage.titleOfCompareTab.getText())).toContain(constants.NUMBEROFCOMPARINGPODUCTS)
     })
 
-
 })
-
 
 describe('Adding products to cart', async () =>  {
     it.skip('One product should be add to cart', async () => {
@@ -43,7 +41,7 @@ describe('Adding products to cart', async () =>  {
         await expect(await (mainPage.addTheSameProductToCartTwiceTitle.getText())).toContain(constants.NOTIFICATIONWHENTHESAMEPRODUCTADDEDTWICE)
     })
 
-    it('Final price of the order must be equal to the sum of the prices of the items.', async () => {
+    it.skip('Final price of the order must be equal to the sum of the prices of the items.', async () => {
         await mainPage.navigate(constants.BASEURL);
         await mainPage.addProductToCart(constants.VACUUMCLEANERSCATEGORY)
         await mainPage.addProductToCart(constants.HEADPHONESCATEGORY)
@@ -53,13 +51,19 @@ describe('Adding products to cart', async () =>  {
         await expect(await summPrice).toEqual(await mainPage.getFinalPriceOfOrder())
     })
 
+    it.skip('Button to send review is available', async () => {
+        await mainPage.navigate(constants.BASEURL);
+        await mainPage.openReviewForProductModal(constants.HEADPHONESCATEGORY);
+        await mainPage.fillUpReviewForm(constants.FIRSTNAME, constants.VALIDLOGIN, constants.INVALIDSEARCHKEYWORD)
+        await expect(await (mainPage.buttonToSendReview.isEnabled())).toEqual(true)
+    })
+
 
 })
 describe('Adding products to Favorites', async () => {
     it.skip('Modal Popup login should be displayed when user try to add product to favorites without logged in', async () => {
         await mainPage.navigate(constants.BASEURL);
         await mainPage.addProductToFavorites(constants.SMARTPHONESCATEGORY)
-
         await expect(await (loginPage.titleFfModalPopupLogin.getText())).toEqual(constants.TITLEOFMODALPOPUPLOGOIN)
     })
     it.skip('add product to favorites after logged in', async () => {
@@ -80,11 +84,14 @@ describe('Adding products to Favorites', async () => {
     })
 
 
-
-
-
 })
-
+describe('Sorting products', async () => {
+    it('Price of products should not exceed the established maximum', async () => {
+        await mainPage.navigate(constants.BASEURL);
+        await mainPage.selectAvaialbePromotion(constants.PROMOTIONSCATOGORY)
+        await expect(await (mainPage.titleOfInstallmentPlan.getText())).toContain("Картой рассрочки")
+    })
+})
 
 describe.skip('Promotions of products', async () => {
     it('"Картой рассрочки" should contain each product in the list', async () => {

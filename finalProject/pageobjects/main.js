@@ -131,6 +131,49 @@ class MainPage extends Base {
         return finalPrice
     }
 
+    async openReviewForProductModal(numberOfCategory){
+        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
+        await this.baseClick(this.firstProductInTheList);
+        await this.baseClick(this.buttonToOpenReviwPage);
+        await this.baseClick(this.buttonToAddReview);
+
+    }
+
+    async fillUpReviewForm(name,email, text ){
+        await this.baseSetValue(this.nameForReviewField,name);
+        await this.baseSetValue(this.emailForReviewField,email);
+        await this.baseSetValue(this.textForGeneralInpression, text);
+        await this.buttonForAgreement.click();
+    }
+
+    get firstProductInTheList(){
+        return $('.swiper-slide.aa.swiper-slide-visible.swiper-slide-active');
+    }
+
+    get buttonToOpenReviwPage(){
+        return $$('._anchor-info')[0]
+    }
+
+    get buttonToAddReview(){
+        return $('//button[text()="Добавить отзыв"]')
+    }
+    get nameForReviewField(){
+        return $$('.inp.inp--lg[type="text"]')[3]
+    }
+    get emailForReviewField(){
+        return $$('.inp.inp--lg[type="text"]')[4]
+    }
+    get textForGeneralInpression(){
+        return $$('.inp.inp--lg[type="text"]')[8]
+    }
+
+    get buttonToSendReview(){
+        return $('//button[text()="Опубликовать отзыв"]');
+    }
+    get buttonForAgreement(){
+        return $$('.inp-box__view')[3]
+    }
+
 }
 
 module.exports = new MainPage();
