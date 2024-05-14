@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "boolean"
+    },
+    "errors": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "object",
+          "properties": {
+            "login": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "login"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "fields"
+      ]
+    },
+    "message": {
+      "type": "string"
+    },
+    "bpm": {
+      "type": "array",
+      "items": {}
+    },
+    "extra": {
+      "type": "array",
+      "items": {}
+    }
+  },
+  "required": [
+    "status",
+    "errors",
+    "message",
+    "bpm",
+    "extra"
+  ]
+}

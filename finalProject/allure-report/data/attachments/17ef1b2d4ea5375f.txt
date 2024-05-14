@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": ".swiper-slide.swiper-slide-visible[aria-label=\"7 / 11\"]"
+}

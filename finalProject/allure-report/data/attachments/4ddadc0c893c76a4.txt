@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": ".inp-box__text"
+}

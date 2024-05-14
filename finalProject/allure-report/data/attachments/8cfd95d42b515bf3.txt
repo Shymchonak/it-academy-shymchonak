@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//div[@style=\"display: inline;\"]"
+}

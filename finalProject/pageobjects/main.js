@@ -3,7 +3,7 @@ const Base = require('../pageobjects/base')
 const mainNavMenu = require('../pageobjects/components/mainNavMenu')
 const {waitForElementIsDisplayed} = require("../helpers/waiter");
 const loginPage = require("./loginPage");
-const constants = require("../testdata/Constants");
+const constants = require("../e2eTestData/Constants");
 
 class MainPage extends Base {
 
@@ -174,6 +174,27 @@ class MainPage extends Base {
         return $$('.inp-box__view')[3]
     }
 
+    async arrayOfPricesAllProducts(){
+        return '.c-price'
+    }
+    async createNewArrayOfElementsText(elemtns){
+        const textArray = browser.$$(elemtns).map(elem => elem.getText());
+        return textArray
+    }
+    async convertArrayOfElentsTextToLowerCaseForComparing(arrayToLowerCase){
+        let myresult = await this.createNewArrayOfElementsText(arrayToLowerCase)
+        let newmyresult = myresult.map(el => el.toUpperCase());
+        return newmyresult
+    }
+
+    async removeNumberFromString(string){
+        let newstring = string.replace(/([0-9])/g, '');
+        return newstring
+    }
+
+    async listOfFilteredItems(){
+        return '//a[@class="c-text"]'
+    }
 }
 
 module.exports = new MainPage();

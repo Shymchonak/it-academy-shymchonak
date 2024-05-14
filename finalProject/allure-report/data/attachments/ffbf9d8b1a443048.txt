@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": ".inp.inp--lg.ec_filter"
+}
