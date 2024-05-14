@@ -10,7 +10,7 @@ class Constants {
     NUMBEROFCOMPARINGPODUCTS = "2"
     TITLEOFMODALPOPUPLOGOIN = "Вход в аккаунт"
     INVALIDSEARCHKEYWORD = "sdfsdfsdfsdfsdfsdf"
-    VALIDSEARCHKEYWOWRD = "наушники"
+    VALIDSEARCHKEYWOWRD = "пылесос"
     PROMOTIONSCATOGORY = "1"
     SMARTPHONESCATEGORY = "2"
     TELEVISONCATRGORY = "3"
@@ -29,6 +29,10 @@ class Constants {
     SALESPROMOTIONCATEGORY= "3"
     GIFTSPROMOTIONCATEGORY ="4"
     TITLEOFPERSONALAREA = "Личный кабинет"
+    TITLEOFFAVORITEPAGE = "Избранное"
+    TITLEOFEMPTYFAVORITEPAGE = "У нас столько замечательных товаров,\n" +
+        "а в Избранном у Вас – пусто :(\n" +
+        "Перейти в каталог"
     THEREISNOTHINGTOCOMPARE = "Пока не добавлено ни одного товара для сравнения"
     EMPTYCARTTITLE = "В корзине еще нет товаров"
     NOTIFICATIONWHENTHESAMEPRODUCTADDEDTWICE = "Товар уже в корзине, вы хотите добавить еще одну единицу товара?"

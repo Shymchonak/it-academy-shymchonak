@@ -40,7 +40,7 @@ class MainPage extends Base {
     async addProductToFavorites(numberOfCategory){
         await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
         await this.baseClick(this.buttonAddToFavorites);
-        waitForElementIsDisplayed(loginPage.modalPopupLogin)
+
     }
 
 
@@ -97,6 +97,38 @@ class MainPage extends Base {
     }
     get titleOfPersonalArea(){
         return $('//div[@class="section-heading__title" and text()="Личный кабинет"]');
+    }
+    get titleOfFavoritePage(){
+        return $('.section-heading__title')
+    }
+
+    get buttonDeleteAllonFavoritePage(){
+        return $$('.btn.btn--index')[1]
+    }
+    get TetitleOfEmptyFavoritePage(){
+        return $('.account-favorites-epty');
+    }
+    async deleteAllProductFromFvarivePage(){
+        await this.baseClick(this.buttonDeleteAllonFavoritePage)
+    }
+
+
+    priceOfProductInCart(numberOfProduct){
+        return $$('.c-cost')[numberOfProduct]
+    }
+
+    async getPriceOfPrductInCart(numberOfProduct){
+       let priceOfProduct =  Number(await this.priceOfProductInCart(numberOfProduct).getText())
+        return priceOfProduct
+    }
+
+    get finalPriceOfOrder(){
+        return $('.shopping-order-total__value.ec-total-value')
+    }
+
+    async getFinalPriceOfOrder(){
+        let finalPrice = Number(await this.finalPriceOfOrder.getText())
+        return finalPrice
     }
 
 }

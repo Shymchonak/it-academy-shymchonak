@@ -13,10 +13,19 @@ describe('Searching results tests', async () =>  {
         await search.searchByKeyWord(constants.INVALIDSEARCHKEYWORD)
         await expect(await (search.negativeSearchResult.isDisplayed())).toEqual(true)
     })
-    it('List of product should be displayed when search with valid keyword', async () => {
+    it.skip('List of product should be displayed when search with valid keyword', async () => {
         await mainPage.navigate(constants.BASEURL);
         await search.searchByKeyWord(constants.VALIDSEARCHKEYWOWRD)
         await expect(await (search.titileOfSerachResult.getText())).toContain( constants.VALIDSEARCHKEYWOWRD )
+    })
+
+    it('List of product should be displayed when search with valid keyword', async () => {
+        await mainPage.navigate(constants.BASEURL);
+        await search.searchByKeyWord(constants.VALIDSEARCHKEYWOWRD);
+        await console.log(await search.getArrayOfSearchedItesm())
+        for ( el of await search.getArrayOfSearchedItesm()){
+            await expect(el).toContain(constants.VALIDSEARCHKEYWOWRD)
+        }
     })
 
 })

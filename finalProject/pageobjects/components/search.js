@@ -33,6 +33,26 @@ class Search extends Base {
     }
 
 
+    async listOfSearchedItems(){
+        return $$('//a[@class="c-text"]')
+    }
+    async results(elemtns){
+       const textArray = browser.$$(elemtns).map(elem => elem.getText());
+       return textArray
+    }
+
+    async getArrayOfSearchedItesm(){
+        let myresult = await this.results('//a[@class="c-text"]')
+        let newmyresult = myresult.map(el => el.toLowerCase());
+        return newmyresult
+    }
+
+    async perebor(){
+        for (el of this.listOfSearchedItems){
+            el.getText()
+        }
+    }
+
 
 }
 

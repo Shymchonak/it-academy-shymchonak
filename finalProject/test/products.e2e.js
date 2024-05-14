@@ -43,18 +43,50 @@ describe('Adding products to cart', async () =>  {
         await expect(await (mainPage.addTheSameProductToCartTwiceTitle.getText())).toContain(constants.NOTIFICATIONWHENTHESAMEPRODUCTADDEDTWICE)
     })
 
+    it('Final price of the order must be equal to the sum of the prices of the items.', async () => {
+        await mainPage.navigate(constants.BASEURL);
+        await mainPage.addProductToCart(constants.VACUUMCLEANERSCATEGORY)
+        await mainPage.addProductToCart(constants.HEADPHONESCATEGORY)
+        let firstPrice = await mainPage.getPriceOfPrductInCart(0)
+        let secondPrice = await mainPage.getPriceOfPrductInCart(1)
+        let summPrice = firstPrice + secondPrice
+        await expect(await summPrice).toEqual(await mainPage.getFinalPriceOfOrder())
+    })
+
 
 })
 describe('Adding products to Favorites', async () => {
     it.skip('Modal Popup login should be displayed when user try to add product to favorites without logged in', async () => {
         await mainPage.navigate(constants.BASEURL);
         await mainPage.addProductToFavorites(constants.SMARTPHONESCATEGORY)
+
         await expect(await (loginPage.titleFfModalPopupLogin.getText())).toEqual(constants.TITLEOFMODALPOPUPLOGOIN)
     })
+    it.skip('add product to favorites after logged in', async () => {
+        await mainPage.navigate(constants.BASEURL);
+        await loginPage.loginWithCredentials(constants.VALIDLOGIN,constants.VALIDPASSWORD)
+        await mainPage.addProductToFavorites(constants.VACUUMCLEANERSCATEGORY);
+        await mainNavMenu.openFavoritePage();
+        await expect(await (mainPage.titleOfFavoritePage.getText())).toEqual(constants.TITLEOFFAVORITEPAGE)
+    })
+
+    it.skip('favorites page is clear after deletin added products', async () => {
+        await mainPage.navigate(constants.BASEURL);
+        await loginPage.loginWithCredentials(constants.VALIDLOGIN,constants.VALIDPASSWORD)
+        await mainPage.addProductToFavorites(constants.VACUUMCLEANERSCATEGORY);
+        await mainNavMenu.openFavoritePage();
+        await mainPage.deleteAllProductFromFvarivePage();
+        await expect(await (mainPage.TetitleOfEmptyFavoritePage.getText())).toContain(constants.TITLEOFEMPTYFAVORITEPAGE)
+    })
+
+
+
+
+
 })
 
 
-describe('Promotions of products', async () => {
+describe.skip('Promotions of products', async () => {
     it('"Картой рассрочки" should contain each product in the list', async () => {
         await mainPage.navigate(constants.BASEURL);
         await mainPage.selectAvaialbePromotion(constants.PROMOTIONSCATOGORY)

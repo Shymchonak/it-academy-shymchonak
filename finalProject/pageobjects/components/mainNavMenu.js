@@ -19,6 +19,18 @@ class MainNaveMenu extends Base {
         return $('//a[@class="btn btn--index btn--block"]')
     }
 
+    async openFavoritePage(){
+        await this.baseClick(this.buttonToOpenFavoriteModal);
+        await this.baseClick(this.buttonToNavigateToFvaoritePage)
+    }
+    get buttonToOpenFavoriteModal(){
+        return $$('.ic-favorite')[0]
+    }
+
+    get buttonToNavigateToFvaoritePage(){
+        return $('//a[@class="btn btn--index btn--block"]')
+    }
+
 }
 
 module.exports = new MainNaveMenu();
