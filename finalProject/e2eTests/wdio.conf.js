@@ -9,10 +9,14 @@ exports.config = {
     exclude: [
         './tests/**/loginPage.e2e.js',
         './tests/**/search.e2e.js',
-        //'./tests/**/products.e2e.js'
+      //  './tests/**/addProductsToCart.e2e.js',
+      //  './tests/**/comparingProducts.e2e.js',
+       // './tests/**/favoritesProducts.e2e.js',
+       // './tests/**/promotionProducts.e2e.js',
+       // './tests/**/sortingProducts.e2e.js'
     ],
 
-    maxInstances: 10,
+    maxInstances: 2,
 
     capabilities: [{
         browserName: 'chrome',

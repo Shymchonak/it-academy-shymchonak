@@ -2,7 +2,6 @@
 const Base = require('./base')
 const mainNavMenu = require('./components/mainNavMenu')
 const {waitForElementIsDisplayed} = require("../helpers/waiter");
-const loginPage = require("./loginPage");
 const constants = require("../e2eTestData/Constants");
 
 class MainPage extends Base {
@@ -19,7 +18,6 @@ class MainPage extends Base {
         await this.addProdutToCompare(0);
         await this.baseClick(this.compareModalButton);
         await this.baseClick(this.removeProductFromCompareModalButton);
-
     }
 
     async addProductToCart(numberOfCategory){
@@ -81,7 +79,7 @@ class MainPage extends Base {
     get removeProductFromCompareModalButton() {
         return  $('.btn.btn--clear.ic-trash');
     }
-    get thereIsNothingToCompareNotification(){
+    get thereIsNothingToCompareNotification() {
         return $$('.h-drop__content')[0];
     }
 
@@ -105,7 +103,7 @@ class MainPage extends Base {
     get buttonDeleteAllonFavoritePage(){
         return $$('.btn.btn--index')[1]
     }
-    get TetitleOfEmptyFavoritePage(){
+    get tetitleOfEmptyFavoritePage(){
         return $('.account-favorites-epty');
     }
     async deleteAllProductFromFvarivePage(){
