@@ -24,7 +24,7 @@ class LoginPage extends Base {
         return $('.modal-popup.modal-login')
     }
 
-    get titleFfModalPopupLogin(){
+    get titleOfModalPopupLogin(){
         return $('//div[@class="modal-popup modal-login"]//div[@class="modal-popup-heading" and text()="Вход в аккаунт"]')
     }
 

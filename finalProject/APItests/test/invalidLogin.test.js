@@ -4,7 +4,7 @@ const postJsonSchema = require('../apiTestData/invalidLogin.v1.json')
 
 const validator = new Validator();
 
-describe.skip('POST invalidLogin', function(){
+describe('POST invalidLogin', function(){
     let result
     beforeAll( async () => {
         result = await axios.post('https://5element.by/user/login',{

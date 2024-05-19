@@ -31,20 +31,14 @@ class Search extends Base {
         return $$('.c-text')[0]
     }
 
-
     async listOfSearchedItems(){
         return '//a[@class="c-text"]'
     }
-    async results(elemtns){
-       const textArray = browser.$$(elemtns).map(elem => elem.getText());
-       return textArray
+
+    get searchResult(){
+        return $('.section-heading__title')
     }
 
-    async getArrayOfSearchedItesm(){
-        let myresult = await this.results(await this.listOfSearchedItems())
-        let newmyresult = myresult.map(el => el.toLowerCase());
-        return newmyresult
-    }
 
 
 

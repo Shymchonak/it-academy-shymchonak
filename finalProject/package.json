@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test:api": "jest",
-    "wdio": "npm run clear-folders && wdio run e2eTests/wdio.conf.js && npm run allure_open",
+    "wdio": "npm run clear-folders && wdio run e2eTests/wdio.conf.js",
     "allure_open": "npx allure generate && npx allure open",
     "clear-folders": "rimraf \"allure-report\" \"allure-results\""
   },

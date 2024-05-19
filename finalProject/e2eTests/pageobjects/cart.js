@@ -24,7 +24,7 @@ class Cart extends Base {
         return $$('.n-item')[2]
     }
 
-    async checkWhatCartIsEmpty(){
+    async removerProductsFromCartIfItNotEmpty(){
         await this.navigate(constants.OPENACARTPAGE)
         if (this.buttonToRemoveAddedProducts.isDisplayed){
             await this.removeProductFromTheCart();

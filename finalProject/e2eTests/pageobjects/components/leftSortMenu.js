@@ -1,17 +1,15 @@
 const Base = require('../base')
-const mainPage = require('../main')
+const { waitForElementIsDisplayed } = require('../../helpers/waiter')
+
 class LeftSortMenu extends Base {
 
     async sortProductsByMaxPrice(maxPriceOfProduct){
         await this.baseSetValue(this.maxPriceValue, maxPriceOfProduct)
         await this.baseClick(this.filterPrice);
-        await browser.pause(1500)
+        await waitForElementIsDisplayed(this.fulteringResults)
     }
-    async markFirstCheckBoxOfBrandFilter(){
-        await this.baseClick(this.checkboxOfFirstBrand);
-        await browser.pause(1500)
-    }
-    get checkboxOfFirstBrand() {
+
+    get checkBoxOfFirstBrand() {
         return $$('.inp-box__text')[32]
     }
     get textOfCheckBoxOfFirstBrand(){
@@ -22,6 +20,10 @@ class LeftSortMenu extends Base {
     }
     get maxPriceValue(){
         return $$('.inp.inp--lg.ec_filter')[1]
+    }
+
+    get fulteringResults(){
+        return $('//div[@class="item-box"]//span')
     }
 
 }

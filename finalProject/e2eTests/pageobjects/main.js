@@ -6,58 +6,45 @@ const constants = require("../e2eTestData/Constants");
 
 class MainPage extends Base {
 
-    async addProdutToCompare(numberOFproduct){
-        await this.baseClick($$('.btn.btn--clear[title="В сравнение"]')[numberOFproduct]);
+    addProdutToCompare(numberOFproduct){
+        return ($$('.btn.btn--clear[title="В сравнение"]')[numberOFproduct]);
     }
-    async openModalToaddProductToCartButton(numberofProduct, ){
-        await this.baseClick($$('.btn.c-cart.ec-add-to-cart')[numberofProduct]);
+    openModalToaddProductToCartButton(numberofProduct){
+        return $$('.btn.c-cart.ec-add-to-cart')[numberofProduct];
     }
 
-    async   addProductForComparingAndRemoveIt(numberOfCategory){
-        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
-        await this.addProdutToCompare(0);
+    async  addProductForComparing(numberOfCategory, productNumber){
+        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
+        await this.baseClick(this.addProdutToCompare(productNumber));
         await this.baseClick(this.compareModalButton);
-        await this.baseClick(this.removeProductFromCompareModalButton);
     }
 
     async addProductToCart(numberOfCategory){
-        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
+        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
         await this.openModalToaddProductToCartButton(1);
         await this.baseClick(this.goToCartButtonInModal);
-
     }
+
     async addTheSameProductToCartTwice(numberOfCategory){
-        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
+        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
         await this.openModalToaddProductToCartButton(1);
         await this.baseClick(this.goToCartButtonInModal);
-        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
+        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
         await this.openModalToaddProductToCartButton(1);
-
     }
 
     async addProductToFavorites(numberOfCategory){
-        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
+        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
         await this.baseClick(this.buttonAddToFavorites);
 
     }
 
-
-    async   addSPairOfProdusctsForComparing(numberOfCategory, firstProduct, secondProduct){
-        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
-        await this.addProdutToCompare(firstProduct);
-        await this.addProdutToCompare(secondProduct);
-        await this.baseClick(this.compareModalButton);
-        await this.baseClick(mainNavMenu.buttonToOpenComparePage);
-
-    }
-
-    async selectAvaialbePromotion(numberOfCategory){
-        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory))
-        await this.baseClick(this.promotionCategory(constants.INSTALLMENTPLAPROMOTIONCATEGORY))
-        await browser.scroll(0, 400)
+    async selectAvaialbePromotion(numberOfCategory, typeOfPromotion){
+        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory))
+        await this.baseClick(typeOfPromotion)
+        await this.scrollBrowserVertical(400);
         waitForElementIsDisplayed(this.titleOfInstallmentPlan)
     }
-
 
     get titleOfInstallmentPlan(){
         return $$('.c-payment')[1]
@@ -67,6 +54,23 @@ class MainPage extends Base {
         return $$('.item-box')[promotion];
     }
 
+    buttonToConfirmePreOrder(){
+        return $$('//*[@class="btn c-cart ec-preorder btn--block"]')[0]
+    }
+    get preOrderButtton(){
+        return $('//div[@class="item-box" and text()="Предзаказы"]')
+    }
+
+    get preOrderNameFiled(){
+        return $('#preorder_name')
+    }
+    get preOrderPhoneField(){
+        return $('#preorder_phone')
+    }
+
+    get checkOutPreOrderButton(){
+        return $('//button[@class="btn btn--lg btn--block"]//span[text()="Оформить"]')
+    }
 
     get goToCartButtonInModal(){
         return $$('.btn.btn--block')[14]
@@ -79,8 +83,9 @@ class MainPage extends Base {
     get removeProductFromCompareModalButton() {
         return  $('.btn.btn--clear.ic-trash');
     }
+
     get thereIsNothingToCompareNotification() {
-        return $$('.h-drop__content')[0];
+        return $('//p[text()="Пока не добавлено ни одного товара для сравнения"]');
     }
 
     get addTheSameProductToCartTwiceTitle(){
@@ -90,9 +95,11 @@ class MainPage extends Base {
     get buttonAddToFavorites(){
         return  $$('.ic-favorite')[3]
     }
+
     get titleOfCompareTab(){
         return $('.nav-item.active')
     }
+
     get titleOfPersonalArea(){
         return $('//div[@class="section-heading__title" and text()="Личный кабинет"]');
     }
@@ -100,16 +107,13 @@ class MainPage extends Base {
         return $('.section-heading__title')
     }
 
-    get buttonDeleteAllonFavoritePage(){
+    get buttonDeleteAllOnFavoritePage(){
         return $$('.btn.btn--index')[1]
     }
+
     get tetitleOfEmptyFavoritePage(){
         return $('.account-favorites-epty');
     }
-    async deleteAllProductFromFvarivePage(){
-        await this.baseClick(this.buttonDeleteAllonFavoritePage)
-    }
-
 
     priceOfProductInCart(numberOfProduct){
         return $$('.c-cost')[numberOfProduct]
@@ -130,11 +134,10 @@ class MainPage extends Base {
     }
 
     async openReviewForProductModal(numberOfCategory){
-        await this.baseClick(mainNavMenu.getmainCategoriesOfProducts(numberOfCategory));
+        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
         await this.baseClick(this.firstProductInTheList);
         await this.baseClick(this.buttonToOpenReviwPage);
         await this.baseClick(this.buttonToAddReview);
-
     }
 
     async fillUpReviewForm(name,email, text ){
@@ -155,12 +158,15 @@ class MainPage extends Base {
     get buttonToAddReview(){
         return $('//button[text()="Добавить отзыв"]')
     }
+
     get nameForReviewField(){
         return $$('.inp.inp--lg[type="text"]')[3]
     }
+
     get emailForReviewField(){
         return $$('.inp.inp--lg[type="text"]')[4]
     }
+
     get textForGeneralInpression(){
         return $$('.inp.inp--lg[type="text"]')[8]
     }
@@ -168,26 +174,13 @@ class MainPage extends Base {
     get buttonToSendReview(){
         return $('//button[text()="Опубликовать отзыв"]');
     }
+
     get buttonForAgreement(){
         return $$('.inp-box__view')[3]
     }
 
     async arrayOfPricesAllProducts(){
         return '.c-price'
-    }
-    async createNewArrayOfElementsText(elemtns){
-        const textArray = browser.$$(elemtns).map(elem => elem.getText());
-        return textArray
-    }
-    async convertArrayOfElentsTextToLowerCaseForComparing(arrayToLowerCase){
-        let myresult = await this.createNewArrayOfElementsText(arrayToLowerCase)
-        let newmyresult = myresult.map(el => el.toUpperCase());
-        return newmyresult
-    }
-
-    async removeNumberFromString(string){
-        let newstring = string.replace(/([0-9])/g, '');
-        return newstring
     }
 
     async listOfFilteredItems(){
