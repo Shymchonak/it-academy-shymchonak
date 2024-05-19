@@ -1,8 +1,8 @@
-const mainPage = require("../pageobjects/main");
-const mainNavMenu = require("../pageobjects/components/mainNavMenu");
-const loginPage = require('../pageobjects/loginPage')
-const Constants = require("../e2eTestData/Constants");
-const { waitForElementIsDisplayed } = require('../helpers/waiter')
+const mainPage = require('../pageobjects/main');
+const mainNavMenu = require('../pageobjects/components/mainNavMenu');
+const loginPage = require('../pageobjects/loginPage');
+const Constants = require('../e2eTestData/Constants');
+const { waitForElementIsDisplayed } = require('../helpers/waiter');
 
 let constantsLogin
 let constantsProductCategories

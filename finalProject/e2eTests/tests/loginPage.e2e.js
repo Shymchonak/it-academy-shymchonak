@@ -1,6 +1,6 @@
 const mainPage = require ('../pageobjects/main')
 const loginPage = require('../pageobjects/loginPage')
-const Constants = require("../e2eTestData/Constants");
+const Constants = require('../e2eTestData/Constants');
 const header = require('../pageobjects/components/header')
 
 let constantsLogin

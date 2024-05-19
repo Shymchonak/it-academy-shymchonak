@@ -1,7 +1,5 @@
 const Base = require('./base')
 const header = require('./components/header')
-const { waitForElementIsDisplayed } = require('../helpers/waiter')
-
 
 class LoginPage extends Base {
 
@@ -28,22 +26,6 @@ class LoginPage extends Base {
         return $('//div[@class="modal-popup modal-login"]//div[@class="modal-popup-heading" and text()="Вход в аккаунт"]')
     }
 
-    async loginWithCredentials(login, password){
-        await this.baseClick(header.enterButton);
-        await this.baseSetValue(this.loginField, login);
-        await this.baseSetValue(this.passwordFiled, password);
-        await this.baseClick(this.loginButton);
-
-    }
-
-    async registrastionOfNewUser(firstName, lastName, phone){
-        await this.baseClick(header.enterButton);
-        await this.baseClick(this.registrationButton);
-        await this.baseSetValue(this.firstNameField, firstName);
-        await this.baseSetValue(this.lastNameField, lastName);
-        await this.baseSetValue(this.phoneField, phone)
-
-    }
     get registrationButton(){
         return $('//a[@href="#" and text()="Зарегистрируйтесь"]')
     }
@@ -60,6 +42,22 @@ class LoginPage extends Base {
     get getCdoeBySmsOrInViber(){
         return $('//button[@class="btn btn--lg btn--block"]//span[text()="Получить код в Viber или SMS"]')
     }
+
+    async loginWithCredentials(login, password){
+        await this.baseClick(header.enterButton);
+        await this.baseSetValue(this.loginField, login);
+        await this.baseSetValue(this.passwordFiled, password);
+        await this.baseClick(this.loginButton);
+    }
+
+    async registrastionOfNewUser(firstName, lastName, phone){
+        await this.baseClick(header.enterButton);
+        await this.baseClick(this.registrationButton);
+        await this.baseSetValue(this.firstNameField, firstName);
+        await this.baseSetValue(this.lastNameField, lastName);
+        await this.baseSetValue(this.phoneField, phone)
+    }
+
 }
 
 module.exports = new LoginPage();

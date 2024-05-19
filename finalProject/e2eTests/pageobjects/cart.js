@@ -4,7 +4,6 @@ const Constants = require('../e2eTestData/Constants')
 let constantsLogin = new Constants.Cart
 class Cart extends Base {
 
-
     get emptyCartTittle(){
         return $('.section-heading__title')
     }
@@ -17,20 +16,19 @@ class Cart extends Base {
         await this.baseClick(this.buttonToOpenCart);
     }
 
+    get catalogLink(){
+        return $('//div[@class="section-part"]//a')
+    }
+
     get buttonToOpenCart(){
         return $$('.n-item')[2]
     }
 
     async removerProductsFromCartIfItNotEmpty(){
-        await this.navigate(constantsLogin.OPENA_CART_PAGE)
+        await this.navigate(constantsLogin.OPEN_CART_PAGE)
         if (this.buttonToRemoveAddedProducts.isDisplayed){
-            await this.removeProductFromTheCart();
+            this.baseClick(this.buttonToRemoveAddedProducts);
         }
-    }
-
-    async removeProductFromTheCart(){
-        this.baseClick(this.buttonToRemoveAddedProducts);
-        await browser.pause(1000)
     }
 }
 

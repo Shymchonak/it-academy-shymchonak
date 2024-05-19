@@ -1,13 +1,13 @@
 const search = require('../pageobjects/components/search');
-const mainPage = require("../pageobjects/main");
-const Constants = require("../e2eTestData/Constants");
+const mainPage = require('../pageobjects/main');
+const Constants = require('../e2eTestData/Constants');
 const formNewArrays = require('../helpers/formNewArrays')
-const {waitForElementIsDisplayed} = require("../helpers/waiter");
+const {waitForElementIsDisplayed} = require('../helpers/waiter');
 
 let constantsLogin
 let constantsSearch
 
-describe('Searching results tests', async () =>  {
+describe('Searching results tests', async () => {
 
     beforeEach(async () => {
         constantsLogin = new Constants.Login();

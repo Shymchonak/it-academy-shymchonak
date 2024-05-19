@@ -1,13 +1,12 @@
-const mainPage = require("../pageobjects/main");
-const mainNavMenu = require("../pageobjects/components/mainNavMenu");
-const leftSortMenu = require('../pageobjects/components/leftSortMenu')
-const Constants = require("../e2eTestData/Constants");
+const mainPage = require('../pageobjects/main');
+const mainNavMenu = require('../pageobjects/components/mainNavMenu');
+const leftSortMenu = require('../pageobjects/components/leftSortMenu');
+const Constants = require('../e2eTestData/Constants');
 const formNewArrays = require('../helpers/formNewArrays')
-const {waitForElementIsDisplayed} = require("../helpers/waiter");
+const {waitForElementIsDisplayed} = require('../helpers/waiter');
 
 let constantsLogin
 let constantsProductCategories
-let constantsCompareProducts
 let constantsCart
 
 describe('Sorting products', async () => {
@@ -15,7 +14,6 @@ describe('Sorting products', async () => {
     beforeEach(async () => {
         constantsLogin = new Constants.Login();
         constantsProductCategories = new Constants.ProductCategories();
-        constantsCompareProducts = new Constants.CompareProducts();
         constantsCart = new Constants.Cart();
     })
 

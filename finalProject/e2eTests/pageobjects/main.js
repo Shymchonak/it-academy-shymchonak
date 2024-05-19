@@ -1,8 +1,8 @@
 
 const Base = require('./base')
 const mainNavMenu = require('./components/mainNavMenu')
-const {waitForElementIsDisplayed} = require("../helpers/waiter");
-const constants = require("../e2eTestData/Constants");
+const {waitForElementIsDisplayed} = require('../helpers/waiter');
+
 let i =0
 
 class MainPage extends Base {
@@ -10,6 +10,7 @@ class MainPage extends Base {
     addProdutToCompare(numberOFproduct){
         return ($$('.btn.btn--clear[title="В сравнение"]')[numberOFproduct]);
     }
+
     openModalToaddProductToCartButton(numberofProduct){
         return $$('//button[@class="btn c-cart ec-add-to-cart"]//span[text()="В корзину"]')[numberofProduct];
     }
@@ -56,7 +57,7 @@ class MainPage extends Base {
     }
 
     get removeProductFromCompareModalButton() {
-        return  $('.btn.btn--clear.ic-trash');
+        return $('.btn.btn--clear.ic-trash');
     }
 
     get thereIsNothingToCompareNotification() {
@@ -68,7 +69,7 @@ class MainPage extends Base {
     }
 
     get buttonAddToFavorites(){
-        return  $$('.ic-favorite')[3]
+        return $$('.ic-favorite')[3]
     }
 
     get titleOfCompareTab(){
@@ -126,7 +127,7 @@ class MainPage extends Base {
     }
 
     get buttonForAgreement(){
-        return $$('.inp-box__view')[6]
+        return $$('.form-group.privacy-block .inp-box__view')[0]
     }
 
     async arrayOfPricesAllProducts(){
@@ -145,13 +146,14 @@ class MainPage extends Base {
         await this.baseClick(this.buttonToAddReview);
     }
 
-    async fillUpReviewForm(name,email, text ){
+    async fillUpReviewForm(name, email, text){
         await this.baseSetValue(this.nameForReviewField,name);
         await this.baseSetValue(this.emailForReviewField,email);
         await this.baseSetValue(this.textForGeneralInpression, text);
-        await this.buttonForAgreement.click();
+        await this.baseClick(this.buttonForAgreement)
     }
-    async  addProductForComparing(numberOfCategory, productNumber){
+
+    async addProductForComparing(numberOfCategory, productNumber){
         await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
         await this.baseClick(this.addProdutToCompare(productNumber));
         await this.baseClick(this.compareModalButton);

@@ -1,5 +1,5 @@
-const mainPage = require("../pageobjects/main");
-const Constants = require("../e2eTestData/Constants");
+const mainPage = require('../pageobjects/main');
+const Constants = require('../e2eTestData/Constants');
 
 let constantsLogin
 let constantsProductCategories

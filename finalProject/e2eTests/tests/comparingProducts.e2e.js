@@ -1,13 +1,13 @@
-const mainPage = require("../pageobjects/main");
-const Constants = require("../e2eTestData/Constants");
-const {waitForElementIsDisplayed} = require("../helpers/waiter");
-const mainNavMenu = require("../pageobjects/components/mainNavMenu");
+const mainPage = require('../pageobjects/main');
+const Constants = require('../e2eTestData/Constants');
+const {waitForElementIsDisplayed} = require('../helpers/waiter');
+const mainNavMenu = require('../pageobjects/components/mainNavMenu');
 
 let constantsLogin
 let constantsProductCategories
 let constantsCompareProducts
 
-describe('Compare products', async () =>  {
+describe('Compare products', async () => {
 
     beforeEach(async () => {
         constantsLogin = new Constants.Login();
