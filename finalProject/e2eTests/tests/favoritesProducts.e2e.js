@@ -15,12 +15,14 @@ describe('Adding products to Favorites', async () => {
         constantsProductCategories = new Constants.ProductCategories();
         constantsFavorite = new Constants.Favorite();
     })
+
     it('Modal Popup login should be displayed when user try to add product to favorites without logged in', async () => {
         await mainPage.navigate(constantsLogin.BASE_URL);
         await mainPage.addProductToFavorites(constantsProductCategories.SMART_PHONES_CATEGORY)
         await waitForElementIsDisplayed(loginPage.titleOfModalPopupLogin);
         await expect(await (loginPage.titleOfModalPopupLogin.getText())).toEqual(constantsLogin.TITLE_OF_MODAL_POP_UP_LOGIN)
     })
+
     it('add product to favorites after logged in', async () => {
         await mainPage.navigate(constantsLogin.BASE_URL);
         await loginPage.loginWithCredentials(constantsLogin.VALID_LOGIN,constantsLogin.VALID_PASSWORD)
@@ -36,6 +38,4 @@ describe('Adding products to Favorites', async () => {
         await mainPage.baseClick(mainPage.buttonDeleteAllOnFavoritePage);
         await expect(await (mainPage.tetitleOfEmptyFavoritePage.getText())).toContain(constantsFavorite.TITLE_OF_EMPTY_FAVORITE_PAGE)
     })
-
-
 })

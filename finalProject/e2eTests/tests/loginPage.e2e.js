@@ -30,6 +30,4 @@ describe('Login page tests', async () =>  {
         await mainPage.baseClick(header.personalAreaButton);
         await expect(await (mainPage.titleOfPersonalArea.getText())).toContain(constantsLogin.TITLE_OF_PERSONAL_AREA)
     })
-
-
 })

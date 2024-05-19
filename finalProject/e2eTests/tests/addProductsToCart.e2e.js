@@ -62,7 +62,5 @@ describe('Adding products to cart', async () => {
         await mainPage.fillUpReviewForm(constantsLogin.FIRST_NAME, constantsLogin.VALID_LOGIN, constantsSearch.INVALID_SEARCH_KEY_WORD)
         await expect(await (mainPage.buttonToSendReview.isEnabled())).toEqual(true)
     })
-
-
 })
 

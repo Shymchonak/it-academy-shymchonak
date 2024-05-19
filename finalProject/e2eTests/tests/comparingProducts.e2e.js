@@ -32,5 +32,4 @@ describe('Compare products', async () => {
         await mainPage.baseClick(mainNavMenu.buttonToOpenComparePage);
         await expect(await (mainPage.titleOfCompareTab.getText())).toContain(constantsCompareProducts.NUMBER_OF_COMPARING_PRODUCTS)
     })
-
 })

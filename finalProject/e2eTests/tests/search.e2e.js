@@ -35,5 +35,4 @@ describe('Searching results tests', async () => {
             await expect(el).toContain(constantsSearch.VALID_SEARCH_KEY_WOWRD)
         }
     })
-
 })

@@ -35,5 +35,4 @@ describe('Sorting products', async () => {
             await expect(item).toContain(await leftSortMenu.textOfCheckBoxOfFirstBrand.getText())
         }
     })
-
 })

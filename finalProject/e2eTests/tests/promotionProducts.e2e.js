@@ -27,5 +27,4 @@ describe('Promotions of products', async () => {
         await mainPage.baseSetValue(mainPage.preOrderPhoneField, constantsLogin.PHONE)
         await expect(await (mainPage.checkOutPreOrderButton.isEnabled())).toEqual(true)
     })
-
 })
