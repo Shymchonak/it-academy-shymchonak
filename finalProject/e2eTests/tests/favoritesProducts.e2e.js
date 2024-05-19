@@ -2,6 +2,7 @@ const mainPage = require("../pageobjects/main");
 const mainNavMenu = require("../pageobjects/components/mainNavMenu");
 const loginPage = require('../pageobjects/loginPage')
 const Constants = require("../e2eTestData/Constants");
+const { waitForElementIsDisplayed } = require('../helpers/waiter')
 
 let constantsLogin
 let constantsProductCategories
@@ -17,6 +18,7 @@ describe('Adding products to Favorites', async () => {
     it('Modal Popup login should be displayed when user try to add product to favorites without logged in', async () => {
         await mainPage.navigate(constantsLogin.BASE_URL);
         await mainPage.addProductToFavorites(constantsProductCategories.SMART_PHONES_CATEGORY)
+        await waitForElementIsDisplayed(loginPage.titleOfModalPopupLogin);
         await expect(await (loginPage.titleOfModalPopupLogin.getText())).toEqual(constantsLogin.TITLE_OF_MODAL_POP_UP_LOGIN)
     })
     it('add product to favorites after logged in', async () => {

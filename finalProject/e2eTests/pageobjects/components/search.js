@@ -20,23 +20,23 @@ class Search extends Base {
         return $('.search-empty-block')
     }
 
-    async searchByKeyWord(text){
-        await this.baseClick(this.searchField);
-        await this.baseClick(this.secondSearchField);
-        await this.baseSetValue(this.secondSearchField, text)
-        await this.baseClick(this.submitSearchButton);
-    }
-
     get titileOfSerachResult(){
         return $$('.c-text')[0]
+    }
+
+    get searchResult(){
+        return $('.section-heading__title')
     }
 
     async listOfSearchedItems(){
         return '//a[@class="c-text"]'
     }
 
-    get searchResult(){
-        return $('.section-heading__title')
+    async searchByKeyWord(text){
+        await this.baseClick(this.searchField);
+        await this.baseClick(this.secondSearchField);
+        await this.baseSetValue(this.secondSearchField, text)
+        await this.baseClick(this.submitSearchButton);
     }
 
 

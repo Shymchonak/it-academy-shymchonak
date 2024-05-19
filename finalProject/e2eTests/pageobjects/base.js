@@ -19,16 +19,6 @@ class Base {
         await browser.scroll(horizontal, vertical)
     }
 
-    // async formNewArrayWithTextOfElements(elements){
-    //     const textArray = browser.$$(elements).map(elem => elem.getText());
-    //     return textArray
-    // }
-    //
-    // async getArrayWithElementsInLowerCase(elements){
-    //     let myresult = await this.formNewArrayWithTextOfElements(elements)
-    //     let newmyresult = myresult.map(el => el.toLowerCase());
-    //     return newmyresult
-    // }
 
 
 

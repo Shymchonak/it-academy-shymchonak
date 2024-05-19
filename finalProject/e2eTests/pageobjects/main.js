@@ -3,6 +3,7 @@ const Base = require('./base')
 const mainNavMenu = require('./components/mainNavMenu')
 const {waitForElementIsDisplayed} = require("../helpers/waiter");
 const constants = require("../e2eTestData/Constants");
+let i =0
 
 class MainPage extends Base {
 
@@ -10,42 +11,16 @@ class MainPage extends Base {
         return ($$('.btn.btn--clear[title="В сравнение"]')[numberOFproduct]);
     }
     openModalToaddProductToCartButton(numberofProduct){
-        return $$('.btn.c-cart.ec-add-to-cart')[numberofProduct];
+        return $$('//button[@class="btn c-cart ec-add-to-cart"]//span[text()="В корзину"]')[numberofProduct];
     }
 
-    async  addProductForComparing(numberOfCategory, productNumber){
-        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
-        await this.baseClick(this.addProdutToCompare(productNumber));
-        await this.baseClick(this.compareModalButton);
+    get buttonToCloseModalAddProductToCart (){
+        return $('//div[@class="modal-popup modal-added"]//button[@class="modal-popup-close ic-close"]')
     }
 
-    async addProductToCart(numberOfCategory){
-        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
-        await this.openModalToaddProductToCartButton(1);
-        await this.baseClick(this.goToCartButtonInModal);
+    get alreadyInCartButton(){
+        return $('.btn.c-cart.ec-add-to-cart.btn--index')
     }
-
-    async addTheSameProductToCartTwice(numberOfCategory){
-        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
-        await this.openModalToaddProductToCartButton(1);
-        await this.baseClick(this.goToCartButtonInModal);
-        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
-        await this.openModalToaddProductToCartButton(1);
-    }
-
-    async addProductToFavorites(numberOfCategory){
-        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
-        await this.baseClick(this.buttonAddToFavorites);
-
-    }
-
-    async selectAvaialbePromotion(numberOfCategory, typeOfPromotion){
-        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory))
-        await this.baseClick(typeOfPromotion)
-        await this.scrollBrowserVertical(400);
-        waitForElementIsDisplayed(this.titleOfInstallmentPlan)
-    }
-
     get titleOfInstallmentPlan(){
         return $$('.c-payment')[1]
     }
@@ -73,7 +48,7 @@ class MainPage extends Base {
     }
 
     get goToCartButtonInModal(){
-        return $$('.btn.btn--block')[14]
+        return $('//a[@class="btn btn--block" and text()="Перейти в корзину"]')
     }
 
     get compareModalButton(){
@@ -115,38 +90,13 @@ class MainPage extends Base {
         return $('.account-favorites-epty');
     }
 
-    priceOfProductInCart(numberOfProduct){
-        return $$('.c-cost')[numberOfProduct]
-    }
-
-    async getPriceOfPrductInCart(numberOfProduct){
-       let priceOfProduct =  Number(await this.priceOfProductInCart(numberOfProduct).getText())
-        return priceOfProduct
+   priceOfProductInCart(){
+        return $$('.c-cost')
     }
 
     get finalPriceOfOrder(){
         return $('.shopping-order-total__value.ec-total-value')
     }
-
-    async getFinalPriceOfOrder(){
-        let finalPrice = Number(await this.finalPriceOfOrder.getText())
-        return finalPrice
-    }
-
-    async openReviewForProductModal(numberOfCategory){
-        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
-        await this.baseClick(this.firstProductInTheList);
-        await this.baseClick(this.buttonToOpenReviwPage);
-        await this.baseClick(this.buttonToAddReview);
-    }
-
-    async fillUpReviewForm(name,email, text ){
-        await this.baseSetValue(this.nameForReviewField,name);
-        await this.baseSetValue(this.emailForReviewField,email);
-        await this.baseSetValue(this.textForGeneralInpression, text);
-        await this.buttonForAgreement.click();
-    }
-
     get firstProductInTheList(){
         return $('.swiper-slide.aa.swiper-slide-visible.swiper-slide-active');
     }
@@ -176,7 +126,7 @@ class MainPage extends Base {
     }
 
     get buttonForAgreement(){
-        return $$('.inp-box__view')[3]
+        return $$('.inp-box__view')[6]
     }
 
     async arrayOfPricesAllProducts(){
@@ -185,6 +135,48 @@ class MainPage extends Base {
 
     async listOfFilteredItems(){
         return '//a[@class="c-text"]'
+    }
+
+    async openReviewForProductModal(numberOfCategory){
+        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
+        await this.baseClick(this.firstProductInTheList);
+        await this.baseClick(this.buttonToOpenReviwPage);
+        await waitForElementIsDisplayed(this.buttonToAddReview)
+        await this.baseClick(this.buttonToAddReview);
+    }
+
+    async fillUpReviewForm(name,email, text ){
+        await this.baseSetValue(this.nameForReviewField,name);
+        await this.baseSetValue(this.emailForReviewField,email);
+        await this.baseSetValue(this.textForGeneralInpression, text);
+        await this.buttonForAgreement.click();
+    }
+    async  addProductForComparing(numberOfCategory, productNumber){
+        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
+        await this.baseClick(this.addProdutToCompare(productNumber));
+        await this.baseClick(this.compareModalButton);
+    }
+
+    async addProductToCart(numberOfCategory, numberOfProducts){
+        while ( i < numberOfProducts) {
+            await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
+            await this.baseClick(this.openModalToaddProductToCartButton(numberOfProducts));
+            await this.baseClick(this.buttonToCloseModalAddProductToCart)
+            await this.scrollBrowserVertical(-50)
+            i++
+        }
+    }
+
+    async addProductToFavorites(numberOfCategory){
+        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory));
+        await this.baseClick(this.buttonAddToFavorites);
+    }
+
+    async selectAvaialbePromotion(numberOfCategory, typeOfPromotion){
+        await this.baseClick(mainNavMenu.getMainCategoriesOfProducts(numberOfCategory))
+        await this.baseClick(typeOfPromotion)
+        await this.scrollBrowserVertical(400);
+        waitForElementIsDisplayed(this.titleOfInstallmentPlan)
     }
 }
 

@@ -1,34 +1,6 @@
 
-
-class Constants {
-    constructor() {
-    }
-
-
-
-
-
-
-
-    // NUMBEROFADDEDPRODUCTS = "1"
-    // ALLPROMOTIONCATEGORY = "0"
-    // MAINPROMOTIONCATEGORY = "1"
-
-    // SALESPROMOTIONCATEGORY= "3"
-    // GIFTSPROMOTIONCATEGORY ="4"
-    // BUTTON_PREORDER = "0"
-
-    // TITLEOFEMPTYFAVORITEPAGE = "У нас столько замечательных товаров,\n" +
-    //     "а в Избранном у Вас – пусто :(\n" +
-    //     "Перейти в каталог"
-
-    // EMPTYCARTTITLE = "В корзине еще нет товаров"
-    // NOTIFICATIONWHENTHESAMEPRODUCTADDEDTWICE = "Товар уже в корзине, вы хотите добавить еще одну единицу товара?"
-}
-
 class Login  {
     BASE_URL = "https://5element.by/"
-    OPENA_CART_PAGE = "https://5element.by/cart"
     INVALID_PASSWORD =  "sdfsdfsdf"
     INVALID_LOGIN =  "sdfsfdsf"
     VALID_PASSWORD = "MoiParol"
@@ -53,9 +25,9 @@ class Search {
 class ProductCategories {
     PROMOTIONS_CATEGORY = "1"
     SMART_PHONES_CATEGORY = "2"
-    TELEVISON_CATRGORY = "3"
+    TELEVISON_CATRGORY = "5"
     VACUUM_CLEANERS_CATEGORY = "4"
-    WASHING_MACHINES_CATEGORY = "5"
+    WASHING_MACHINES_CATEGORY = "3"
     REFRIGERATORS_CATEGORY = "6"
     MICRO_WAVE_CATEGORY = "7"
     HEADPHONES_CATEGORY = "8"
@@ -68,6 +40,7 @@ class ProductCategories {
     INSTALLMENT_PLAN_PROMOTION_CATEGORY = "2"
     SALES_PROMOTION_CATEGORY= "3"
     GIFTS_PROMOTION_CATEGORY ="4"
+    SPECIFIC_PAGE_URL = "https://5element.by/catalog/513-holodilniki"
 }
 
 class CompareProducts{
@@ -81,8 +54,14 @@ class Favorite {
         "а в Избранном у Вас – пусто :(\n" +
         "Перейти в каталог"
 }
+
 class Cart {
+    OPENA_CART_PAGE = "https://5element.by/cart"
+    ORDER_OF_PRODUCT_IN_THE_LIST = "0"
     MAX_PRICE_OF_PRODUCT = "500"
+    NUMBER_OF_ADDED_PRODUCTS = "1"
+    EMPTY_CART_TITLE = "В корзине еще нет товаров"
+    NOTIFICATION_WHEN_THE_SAME_PRODUCT_ADDED_TWICE = "Товар уже в корзине, вы хотите добавить еще одну единицу товара?"
 }
 module.exports =  {
     Login : Login,

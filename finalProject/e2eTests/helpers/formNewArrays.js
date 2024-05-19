@@ -18,7 +18,6 @@ class FormNewArrays extends Base {
         let newmyresult = myresult.map(el => el.toUpperCase());
         return newmyresult
     }
-
 }
 
 module.exports = new FormNewArrays();

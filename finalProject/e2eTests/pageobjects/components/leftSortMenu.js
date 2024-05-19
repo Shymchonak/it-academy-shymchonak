@@ -3,12 +3,6 @@ const { waitForElementIsDisplayed } = require('../../helpers/waiter')
 
 class LeftSortMenu extends Base {
 
-    async sortProductsByMaxPrice(maxPriceOfProduct){
-        await this.baseSetValue(this.maxPriceValue, maxPriceOfProduct)
-        await this.baseClick(this.filterPrice);
-        await waitForElementIsDisplayed(this.fulteringResults)
-    }
-
     get checkBoxOfFirstBrand() {
         return $$('.inp-box__text')[32]
     }
@@ -26,6 +20,11 @@ class LeftSortMenu extends Base {
         return $('//div[@class="item-box"]//span')
     }
 
+    async sortProductsByMaxPrice(maxPriceOfProduct){
+        await this.baseSetValue(this.maxPriceValue, maxPriceOfProduct)
+        await this.baseClick(this.filterPrice);
+        await waitForElementIsDisplayed(this.fulteringResults)
+    }
 }
 
 module.exports = new LeftSortMenu();
