@@ -1,23 +1,22 @@
-const Base = require ('../pageobjects/base')
+const Base = require('../pageobjects/base');
 
 class FormNewArrays extends Base {
+  async formNewArrayWithTextOfElements(elements) {
+    const textArray = browser.$$(elements).map((elem) => elem.getText());
+    return textArray;
+  }
 
-    async formNewArrayWithTextOfElements(elements){
-        const textArray = browser.$$(elements).map(elem => elem.getText());
-        return textArray
-    }
+  async getArrayWithElementsInLowerCase(elements) {
+    let myresult = await this.formNewArrayWithTextOfElements(elements);
+    let newmyresult = myresult.map((el) => el.toLowerCase());
+    return newmyresult;
+  }
 
-    async getArrayWithElementsInLowerCase(elements){
-        let myresult = await this.formNewArrayWithTextOfElements(elements)
-        let newmyresult = myresult.map(el => el.toLowerCase());
-        return newmyresult
-    }
-
-    async getArrayWithElementsInUpperCase(elements){
-        let myresult = await this.formNewArrayWithTextOfElements(elements)
-        let newmyresult = myresult.map(el => el.toUpperCase());
-        return newmyresult
-    }
+  async getArrayWithElementsInUpperCase(elements) {
+    let myresult = await this.formNewArrayWithTextOfElements(elements);
+    let newmyresult = myresult.map((el) => el.toUpperCase());
+    return newmyresult;
+  }
 }
 
 module.exports = new FormNewArrays();

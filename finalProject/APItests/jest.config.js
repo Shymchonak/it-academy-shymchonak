@@ -87,7 +87,8 @@ const config = {
   //   "json",
   //   "node"
   // ],
-  reporters: ['default',
+  reporters: [
+    'default',
     [
       'jest-html-reporters',
       {
