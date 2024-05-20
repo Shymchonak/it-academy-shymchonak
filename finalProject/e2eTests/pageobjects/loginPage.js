@@ -57,7 +57,6 @@ class LoginPage extends Base {
         await this.baseSetValue(this.lastNameField, lastName);
         await this.baseSetValue(this.phoneField, phone)
     }
-
 }
 
 module.exports = new LoginPage();

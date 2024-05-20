@@ -15,8 +15,8 @@ describe('Promotions of products', async () => {
 
     it('"Картой рассрочки" should contain each product in the list', async () => {
         await mainPage.navigate(constantsLogin.BASE_URL);
-        await mainPage.selectAvaialbePromotion(constantsProductCategories.PROMOTIONS_CATEGORY,  mainPage.promotionCategory(constantsPromotion.INSTALLMENT_PLAN_PROMOTION_CATEGORY))
-        await expect(await (mainPage.titleOfInstallmentPlan.getText())).toContain("Картой рассрочки")
+        await mainPage.selectAvaialbePromotion(constantsProductCategories.PROMOTIONS_CATEGORY, mainPage.promotionCategory(constantsPromotion.INSTALLMENT_PLAN_PROMOTION_CATEGORY))
+        await expect(await (mainPage.titleOfInstallmentPlan.getText())).toContain('Картой рассрочки')
     })
 
     it('button "Pre-order" is available when all reuqired fields are filled', async () => {

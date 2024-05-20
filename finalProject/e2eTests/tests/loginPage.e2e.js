@@ -5,8 +5,7 @@ const header = require('../pageobjects/components/header')
 
 let constantsLogin
 
-
-describe('Login page tests', async () =>  {
+describe('Login page tests', async () => {
 
     beforeEach(async () => {
         constantsLogin = new Constants.Login();

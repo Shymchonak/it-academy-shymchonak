@@ -18,11 +18,6 @@ class Base {
     async scrollBrowserVertical(vertical, horizontal = 0){
         await browser.scroll(horizontal, vertical)
     }
-
-
-
-
 }
 
-
-module.exports =  Base;
+module.exports = Base;

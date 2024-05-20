@@ -6,7 +6,8 @@
     "test:api": "jest",
     "wdio": "npm run clear-folders && wdio run e2eTests/wdio.conf.js && npm run allure_open",
     "allure_open": "npx allure generate && npx allure open",
-    "clear-folders": "rimraf \"allure-report\" \"allure-results\""
+    "clear-folders": "rimraf \"allure-report\" \"allure-results\"",
+    "lint": "eslint --debug ./ --fix"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +21,8 @@
     "@wdio/mocha-framework": "^8.36.1",
     "@wdio/spec-reporter": "^8.36.1",
     "eslint": "^9.3.0",
-    "globals": "^15.3.0"
+    "globals": "^15.3.0",
+    "prettier": "^3.2.5"
   },
   "dependencies": {
     "allure-commandline": "^2.29.0",

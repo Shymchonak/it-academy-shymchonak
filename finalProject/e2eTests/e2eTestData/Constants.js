@@ -50,9 +50,9 @@ class CompareProducts{
 
 class Favorite {
     TITLE_OF_FAVORITE_PAGE = 'Избранное'
-    TITLE_OF_EMPTY_FAVORITE_PAGE = "У нас столько замечательных товаров,\n" +
-        "а в Избранном у Вас – пусто :(\n" +
-        "Перейти в каталог"
+    TITLE_OF_EMPTY_FAVORITE_PAGE = 'У нас столько замечательных товаров,\n' +
+        'а в Избранном у Вас – пусто :(\n' +
+        'Перейти в каталог'
 }
 
 class Cart {
