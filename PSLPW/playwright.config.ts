@@ -13,9 +13,11 @@ const config = defineConfig({
   use: {
     trace: 'retain-on-failure',
     headless: false,
+    storageState: './e2etests/state.json',
+    baseURL: 'https://staging.pasalo.pro'
     // video: 'retain-on-failure'
   },
-
+  globalSetup: './e2etests/globalSetup.ts',
 
   /* Configure projects for major browsers */
   projects: [
@@ -64,4 +66,4 @@ const config = defineConfig({
 });
 
 
-module.exports = config;
+export default  config;

@@ -1,0 +1,39 @@
+{
+  "cookies": [
+    {
+      "name": "token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTc4MSwiaWF0IjoxNzQ3NTkxMjc2fQ.Ya3aWmS6g8R82yhKvcqWQzBVqg-j2jgcKV0dnniD9gg",
+      "domain": "staging.pasalo.pro",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "userId",
+      "value": "1781",
+      "domain": "staging.pasalo.pro",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://staging.pasalo.pro",
+      "localStorage": [
+        {
+          "name": "iconify-count",
+          "value": "0"
+        },
+        {
+          "name": "iconify-version",
+          "value": "iconify2"
+        }
+      ]
+    }
+  ]
+}

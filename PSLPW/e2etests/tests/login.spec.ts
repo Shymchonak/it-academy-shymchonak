@@ -1,22 +1,35 @@
 import { test, expect, Page } from '@playwright/test';
 import { StartPage } from '../pageObjects/startPage';
 import { DashboardPage } from '../pageObjects/dashboardPage';
+import { Login, Dashboard } from '../testData/constants'
 
-test.describe('Login page tests', () => {
+
+test.use({ storageState: undefined });
+
+test.describe('Valid/invalid login', () => {
+
     let startPage: StartPage;
     let dashboardPage: DashboardPage;
+    let loginConstants: Login;
+    let dashboardConstants: Dashboard;
 
-    test.beforeEach(async ({ page }: {page: Page}) => {
+    test.beforeEach(async ({ page }) => {
         startPage = new StartPage(page);
         dashboardPage = new DashboardPage(page);
+        loginConstants = new Login();
+        dashboardConstants = new Dashboard();
+        await page.context().clearCookies();
+        await startPage.navigate(loginConstants.BASE_URL);
     });
 
-    test('Valid login', async () => {
-        await startPage.navigate('https://staging.pasalo.pro/login');
-        await startPage.loginField.fill('shymnakjob+1000@gmail.com');
-        await startPage.passwordField.fill('V1@chaslau');
-        await startPage.loginButton.click();
-      //  await dashboardPage.page.waitForTimeout(4000)
-        await expect( await dashboardPage.logoutButton.textContent()).toContain('Logout');
+    test('Invalid login', async ({ page }: {page: Page}) => {
+        await startPage.loginProcess(loginConstants.INVALID_EMAIL, loginConstants.INVALID_PASSWORDS)
+        await expect( await startPage.notificationMessage.textContent()).toContain(loginConstants.NOTIFICAION_MESSAGE);
     });
+
+    test('Valid login', async ({ page }: {page: Page}) => {
+        await startPage.loginProcess(loginConstants.VALID_EMAIL, loginConstants.VALID_PASSWORD)
+        await expect( await dashboardPage.logoutButton.textContent()).toContain(dashboardConstants.logoutButton);
+    });
+
 });

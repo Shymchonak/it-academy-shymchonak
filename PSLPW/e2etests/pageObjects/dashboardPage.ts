@@ -9,5 +9,9 @@ export class DashboardPage extends Base {
     get logoutButton():Locator {
         return this.page.locator('//button[contains(text(), "Logout")]');
     }
+
+    topNavigations(sectionName:string):Locator {
+        return this.page.locator(`//div[@class=\'dashboard-header-redesign__top-wrapper\']//div[contains(text(), "${sectionName}")]`)
+    }
 }
 
