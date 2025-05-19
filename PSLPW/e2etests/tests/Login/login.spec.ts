@@ -1,7 +1,7 @@
 import { test, expect, Page } from '@playwright/test';
-import { StartPage } from '../pageObjects/startPage';
-import { DashboardPage } from '../pageObjects/dashboardPage';
-import { Login, Dashboard } from '../testData/constants'
+import { StartPage } from '../../pageObjects/startPage';
+import { DashboardPage } from '../../pageObjects/dashboardPage';
+import { Login, Dashboard } from '../../testData/constants'
 
 
 test.use({ storageState: undefined });

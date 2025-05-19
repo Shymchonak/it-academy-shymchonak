@@ -2,7 +2,7 @@
   "cookies": [
     {
       "name": "token",
-      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTc4MSwiaWF0IjoxNzQ3NTkxMjc2fQ.Ya3aWmS6g8R82yhKvcqWQzBVqg-j2jgcKV0dnniD9gg",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTc4MSwiaWF0IjoxNzQ3NjMzOTIwfQ.w5V69iFZTkwq6d7uNoEWuwrxsle63N7jppq9kgYh4Is",
       "domain": "staging.pasalo.pro",
       "path": "/",
       "expires": -1,
