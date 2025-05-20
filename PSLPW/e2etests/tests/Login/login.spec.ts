@@ -22,12 +22,13 @@ test.describe('Valid/invalid login', () => {
         await startPage.navigate(loginConstants.BASE_URL);
     });
 
-    test('Invalid login', async ({ page }: {page: Page}) => {
+    test('Invalid login', async ({page: Page}) => {
         await startPage.loginProcess(loginConstants.INVALID_EMAIL, loginConstants.INVALID_PASSWORDS)
         await expect( await startPage.notificationMessage.textContent()).toContain(loginConstants.NOTIFICAION_MESSAGE);
     });
 
-    test('Valid login', async ({ page }: {page: Page}) => {
+    test('Valid login', async ({page:Page}) => {
+
         await startPage.loginProcess(loginConstants.VALID_EMAIL, loginConstants.VALID_PASSWORD)
         await expect( await dashboardPage.logoutButton.textContent()).toContain(dashboardConstants.logoutButton);
     });

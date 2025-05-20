@@ -2,11 +2,12 @@ import {Page, Locator} from "@playwright/test";
 import { Base } from "./basePage";
 import { CommunitiesList} from "./components/communitiesList";
 import { LeftSideMenu } from "../pageObjects/components/leftSideMenu";
-import { CommunityDetails } from "../testData/constants";
+import { CommunityDetails, TaskTypes } from "../testData/constants";
 
 let communitiesList: CommunitiesList
 let leftSideMenu: LeftSideMenu
 let communityDetailsConst: CommunityDetails
+let taskTypesConst: TaskTypes
 
 
 
@@ -18,6 +19,7 @@ export class CommunityDetailsPage extends Base {
         leftSideMenu = new LeftSideMenu(page);
         communityDetailsConst = new CommunityDetails();
         communitiesList = new CommunitiesList(page);
+        taskTypesConst = new TaskTypes()
 
     }
 
@@ -59,9 +61,32 @@ export class CommunityDetailsPage extends Base {
         return this.page.locator('//div[@class=\'status-heading\' and contains(text(),\'Tasks statuses\')]//button')
     }
 
+    get buttonAddTaskTypes(): Locator{
+        return this.page.locator('//div[@class=\'status-heading\' and contains(text(),\'Task types\')]//button')
+    }
 
     get taskStatusNameField(): Locator{
         return this.page.locator('//h2[contains(text(), "Create task status")]/following-sibling::div[@class=\'input-group\']//div[@class=\'input\']//input')
+    }
+
+    get taskTypeNameField(): Locator {
+        return this.page.locator('//h2[contains(text(), "Create a new task type")]/following-sibling::div[@class=\'input-group\']//div[@class=\'input\']//input')
+    }
+
+    get taskTypeNameFieldForEdit(): Locator {
+        return this.page.locator('//h2[contains(text(), "Update task type")]/following-sibling::div[@class=\'input-group\']//div[@class=\'input\']//input')
+    }
+
+    // get typeIconCategoryDropDown(): string{
+    //     return this.page.locator('select[name="categoryIcon"]')
+    // }
+    //
+    // get typeIconCategorySelection(): Locator{
+    //     return this.page.locator('[value=Business]')
+    // }
+
+    iconForTaskType(iconId:string):Locator{
+        return this.page.locator(`button#${iconId}`)
     }
 
     get taskStatusNameFieldForEdit(): Locator{
@@ -82,9 +107,18 @@ export class CommunityDetailsPage extends Base {
     get createTaskStatuButton():Locator {
         return this.page.locator('//button[contains(text(), "Create task status")]')
     }
+
+    get createTaskTypeButton():Locator {
+        return this.page.locator('//button[contains(text(), "Create type")]')
+    }
     get updateTaskStatuButton():Locator {
         return this.page.locator('//button[contains(text(), "Update task status")]')
     }
+
+    get updateTaskTypeButton():Locator {
+        return this.page.locator('//button[contains(text(), "Update type")]')
+    }
+
     // async selectPrivacyOfCommunity(setUpPrivacy:Locator):Promise<void>{
     //     await this.privacyDropDownMenu.click();
     //     await setUpPrivacy.click()
@@ -93,6 +127,10 @@ export class CommunityDetailsPage extends Base {
     get descriptionField(): Locator{
         return this.page.locator('textarea[rows="5"]')
     }
+
+    // get closeNotificationButton(): Locator{
+    //     return this.page.locator('.Toastify__close-button')
+    // }
 
     successCommunityDetailsNotifications(successMessage:string):Locator{
         return this.page.locator(`//div[contains(text(), "${successMessage}")]`)
@@ -107,6 +145,29 @@ export class CommunityDetailsPage extends Base {
         return this.page.locator(`//div[contains(text(), "${taskStatusNameForDeletion}")]/following-sibling::div//i[contains(@class, "fa-times")]`)
     }
 
+    editTaskTypeButton(typeNameForEdit:string):Locator{
+        return this.page.locator(`//span[contains(text(), "${typeNameForEdit}")]/following-sibling::div//i[contains(@class, "fa-pencil")]`)
+    }
+
+    selectTaskType(tastTypeName:string):Locator{
+        return this.page.locator(`//span[contains(text(), "${tastTypeName}")]`)
+    }
+
+    get addSubtypeButton():Locator {
+        return this.page.locator('//div[contains(text(), "Sub types")]//button')
+    }
+
+    get subtypeNameField(): Locator{
+        return this.page.locator('//h2[contains(text(), "Create a new sub-type inside")]/following-sibling::div[@class=\'input-group\']//div[@class=\'input\']//input')
+    }
+
+    get createSubtypeButton():Locator {
+        return this.page.locator('//button[contains(text(), "Create sub-type")]')
+    }
+
+    deleteTaskTypeButton(typeNameForDeletion:string):Locator{
+        return this.page.locator(`//span[contains(text(), "${typeNameForDeletion}")]/following-sibling::div//i[contains(@class, "fa-times")]`)
+    }
 
     async createNewCommunity(newCommunityName: string):Promise<void>{
         await leftSideMenu.goToManagePage();
@@ -144,6 +205,32 @@ export class CommunityDetailsPage extends Base {
         await this.deleteTaskStatusButton(taskStatusNameForDeletion).click();
         await this.confirmDeleteButton.click()
     }
+
+    async createTaskTypeWithoutSubtype(typeName:string,typeIcon:string): Promise<void> {
+        await this.buttonAddTaskTypes.click();
+        await this.taskTypeNameField.fill(typeName);
+        await this.page.selectOption(taskTypesConst.ICON_CATEGORY, taskTypesConst.ICON_CATEGORY_SELECTION )
+        await this.iconForTaskType(typeIcon).click();
+        await this.createTaskTypeButton.click();
+    }
+
+    async editTaskType(TypeName:string, newTaskTypeName:string):Promise<void>{
+        await this.editTaskTypeButton(TypeName).click();
+        await this.taskTypeNameFieldForEdit.fill(newTaskTypeName);
+        await this.updateTaskTypeButton.click()
+    }
+
+    async createSubtypeWithoutTimer (taskTypeName:string,subtypeName:string):Promise<void> {
+        await this.selectTaskType(taskTypeName).click();
+        await this.addSubtypeButton.click();
+        await this.subtypeNameField.fill(subtypeName);
+        await this.createSubtypeButton.click();
+    }
+    async taskTypeDeletion (taskTypeNameForDeletion:string):Promise<void>{
+        await this.deleteTaskTypeButton(taskTypeNameForDeletion).click();
+        await this.confirmDeleteButton.click();
+    }
+
     async deleteCommunity(nameOfCommunityForDeletion:string):Promise<void>{
         await communitiesList.getCommunityInTheList(nameOfCommunityForDeletion).click()
         await this.additionalCommunityOptions.click();

@@ -69,6 +69,9 @@ test.describe.serial('Community Task Statuses', ()=> {
     })
 
     test('Delete custom INPROGRESS task status', async () => {
+        if (await communityDetails.successCommunityDetailsNotifications(communityDetailsConst.STATUS_DELETED).isVisible()){
+            await  communityDetails.successCommunityDetailsNotifications(communityDetailsConst.STATUS_DELETED).click()
+        }
         await communityDetails.deleteTaskStatus(customTaskStatusesConst.CUSTOM_TASK_STATUS_INPROGRESS_NAME_EDITED)
         await (expect (communityDetails.successCommunityDetailsNotifications(communityDetailsConst.STATUS_DELETED)).toBeVisible())
     })
@@ -78,7 +81,7 @@ test.describe.serial('Community Task Statuses', ()=> {
             await  communityDetails.successCommunityDetailsNotifications(communityDetailsConst.STATUS_DELETED).click()
         }
         await communityDetails.deleteTaskStatus(customTaskStatusesConst.CUSTOM_TASK_STATUS_COMPLETED_NAME_EDITED)
-        await (expect (communityDetails.successCommunityDetailsNotifications(communityDetailsConst.STATUS_DELETED)).toBeVisible())
+        await (expect (communityDetails.deleteTaskStatusButton(customTaskStatusesConst.CUSTOM_TASK_STATUS_COMPLETED_NAME_EDITED)).not.toBeVisible())
     })
 
 

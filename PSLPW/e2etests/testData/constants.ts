@@ -30,6 +30,10 @@ export class CommunityDetails {
     STATUS_CREATED = "Status created!"
     STATUS_UPDATED = "Status updated!"
     STATUS_DELETED = "Status deleted!"
+    TASK_TYPE_CREATED ="Task type created!"
+    TASK_TYPE_UPDATE = "Task type updated!"
+    TASK_TYPE_DELETED = "Task type deleted!"
+    SUBTYPE_CREATED = "Task sub-type created!"
 }
 
 export class CustomTaskStatuses {
@@ -46,4 +50,19 @@ export class CustomTaskStatuses {
     CUSTOM_TASK_STATUS_INPROGRESS_NAME_EDITED = "Custom Auto INPROGRESS UPD"
     CUSTOM_TASK_STATUS_COMPLETED_NAME = "Custom Auto COMPLETED"
     CUSTOM_TASK_STATUS_COMPLETED_NAME_EDITED = "Custom Auto COMPLETED UPD"
+}
+
+export class TaskTypes {
+    COMMUNITY_TASK_TYPE_NAME = "Task types"
+    TYPE_WITHOUT_SUBTYPE_NAME = "Type without sub-type"
+    TYPE_WITH_SUBTYPE_WITHOUT_TIMER_NAME = "Type with sub-type without TIMER"
+    TYPE_WITHOUT_SUBTYPE_NAME_EDITED = "Type without sub-type UPD"
+    TYPE_WITH_SUBTYPE_NAME_EDITED = "Type with sub-type UPD"
+    SUBTYPE_WITHOUT_TIMER = "Subtype without TIMER"
+    ICON_ID_BUG_TWO_FILL = "bug-2-fill"
+    ICON_ID_BUG_TWO_LINE = "bug-2-line"
+    ICON_ID_BUG_FILL = "bug-fill"
+    ICON_ID_BUG_LINE = "bug-line"
+    ICON_CATEGORY = 'select[name="categoryIcon"]'
+    ICON_CATEGORY_SELECTION = "Development"
 }

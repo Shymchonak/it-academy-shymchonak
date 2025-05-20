@@ -7,7 +7,8 @@
     "test wr": "npx playwright test --reporter=null",
     "test login": "npx playwright test login.spec.ts",
     "test communityDetails": "npx playwright test communityDetails.spec.ts",
-    "test taskstatuses": "npx playwright test communityTaskStatuses.spec.ts"
+    "test taskstatuses": "npx playwright test communityTaskStatuses.spec.ts",
+    "test types": "npx playwright test communityTaskTypes.spec.ts"
   },
   "keywords": [],
   "author": "",

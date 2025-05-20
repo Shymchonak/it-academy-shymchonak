@@ -23,7 +23,7 @@ export class StartPage extends Base {
     }
 
     get loginButton():Locator {
-        return this.page.locator('.button');
+        return this.page.locator('//button');
     }
 
     get notificationMessage(): Locator {
