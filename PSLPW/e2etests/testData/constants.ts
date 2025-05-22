@@ -56,13 +56,30 @@ export class TaskTypes {
     COMMUNITY_TASK_TYPE_NAME = "Task types"
     TYPE_WITHOUT_SUBTYPE_NAME = "Type without sub-type"
     TYPE_WITH_SUBTYPE_WITHOUT_TIMER_NAME = "Type with sub-type without TIMER"
+    TYPE_WITH_SUBTYPE_WITH_TIMER_NAME = "Type with sub-type WITH TIMER"
     TYPE_WITHOUT_SUBTYPE_NAME_EDITED = "Type without sub-type UPD"
     TYPE_WITH_SUBTYPE_NAME_EDITED = "Type with sub-type UPD"
+    TYPE_WITH_MULTIPLE_SUBTYPES = "Type with multiple subtype"
+
     SUBTYPE_WITHOUT_TIMER = "Subtype without TIMER"
+    SUBTYPE_WITHOUT_TIMER_EDITED = "Subtype without TIMER UPD"
+
+    SUBTYPE_WITH_TIMER = "Subtype with TIMER"
+    SUBTYPE_WITH_TIMER_EDITED = "Subtype with TIMER UPD"
+
+    SUBTYPE_MULTIPLE_COLLECTION_FIRST = 'Subtype FIRST without TIMER'
+    SUBTYPE_MULTIPLE_COLLECTION_SECOND = 'Subtype SECOND with TIMER'
+
     ICON_ID_BUG_TWO_FILL = "bug-2-fill"
     ICON_ID_BUG_TWO_LINE = "bug-2-line"
     ICON_ID_BUG_FILL = "bug-fill"
     ICON_ID_BUG_LINE = "bug-line"
     ICON_CATEGORY = 'select[name="categoryIcon"]'
     ICON_CATEGORY_SELECTION = "Development"
+    TIME_PERIOD_MINUTES = "Minutes"
+    TIME_PERIOD_HOURS = "Hours"
+    TIME_PERIOD_DAYS = "Days"
+    TIME_AMOUNT_VALUE = "25"
+    TIME_AMOUNT_VALUE_EDITED = "27"
+
 }

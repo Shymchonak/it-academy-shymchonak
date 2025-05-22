@@ -1,5 +1,5 @@
 node_modules
-/e2etests/state.json
+
 # Playwright
 /test-results/
 /playwright-report/

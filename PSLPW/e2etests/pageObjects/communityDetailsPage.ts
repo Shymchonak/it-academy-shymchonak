@@ -85,6 +85,7 @@ export class CommunityDetailsPage extends Base {
     //     return this.page.locator('[value=Business]')
     // }
 
+
     iconForTaskType(iconId:string):Locator{
         return this.page.locator(`button#${iconId}`)
     }
@@ -165,10 +166,53 @@ export class CommunityDetailsPage extends Base {
         return this.page.locator('//button[contains(text(), "Create sub-type")]')
     }
 
+    get addTimerTogle():Locator{
+        return this.page.locator('.has-tracking .react-toggle-track')
+    }
+
+    get timeMetric():Locator{
+        return this.page.locator('//p[contains(text(), "Time metric")]/following-sibling::div[contains(@class, "rw-dropdown-list")]')
+    }
+
+    get timeAmountValue():Locator{
+        return this.page.locator('//input[@name="amount"]')
+     }
+
+    timePeriod (timerPeriod:string):Locator{
+        return this.page.locator(`//div[@class="rw-list-option" and contains(text(), "${timerPeriod}")]`)
+    }
+
+    editTaskSubTypeButton(subtypeNameForEdit:string):Locator{
+        return this.page.locator(`//div[contains(text(), "${subtypeNameForEdit}")]/following-sibling::div//i[contains(@class, "fa-pencil")]`)
+    }
+
+    get taskSubTypeNameFieldForEdit(): Locator {
+        return this.page.locator('//h2[contains(text(), "Edit sub-type inside")]/following-sibling::div[@class=\'input-group\']//div[@class=\'input\']//input[@name="name"]')
+    }
+
+    get updateTaskSubtypeButton():Locator {
+        return this.page.locator('//div//button[contains(text(), "Update sub-type")]')
+    }
+
+    subtypeNameCheck(subtypeName:string):Locator{
+        return this.page.locator(`//div[contains(text(), "${subtypeName}")]`)
+    }
+
+    get closeEditSubtypeModel():Locator{
+        return this.page.locator('//div[contains(@class, "display-block")]//div[contains(@class, "close")]')
+    }
+
     deleteTaskTypeButton(typeNameForDeletion:string):Locator{
         return this.page.locator(`//span[contains(text(), "${typeNameForDeletion}")]/following-sibling::div//i[contains(@class, "fa-times")]`)
     }
 
+    deleteTaskSubypeButton(subtypeNameForDeletion:string):Locator{
+        return this.page.locator(`//div[contains(text(), "${subtypeNameForDeletion}")]/following-sibling::div//i[contains(@class, "fa-times")]`)
+    }
+
+    selectSubtype(subtypeName:string):Locator{
+        return this.page.locator(`//div[contains(text(), "${subtypeName}")]`)
+    }
     async createNewCommunity(newCommunityName: string):Promise<void>{
         await leftSideMenu.goToManagePage();
         await communitiesList.addCommunityButton.click();
@@ -226,6 +270,39 @@ export class CommunityDetailsPage extends Base {
         await this.subtypeNameField.fill(subtypeName);
         await this.createSubtypeButton.click();
     }
+
+    async createSubtypeWithTimer (taskTypeName:string,subtypeName:string,timePeriod:string,timeValue:string):Promise<void>{
+        await this.selectTaskType(taskTypeName).click();
+        await this.addSubtypeButton.click();
+        await this.subtypeNameField.fill(subtypeName);
+        await this.addTimerTogle.click();
+        await this.timeMetric.click();
+        await this.timePeriod(timePeriod).click();
+        await this.timeAmountValue.fill(timeValue)
+        await this.createSubtypeButton.click();
+    }
+
+    async editTaskSubtypeWithoutTimer(subtypeName:string, newTaskSubtypeName:string):Promise<void>{
+        await this.editTaskSubTypeButton(subtypeName).click();
+        await this.taskSubTypeNameFieldForEdit.fill(newTaskSubtypeName);
+        await this.updateTaskSubtypeButton.click()
+    }
+
+    async editTaskSubtypeWithTimer(subtypeName:string, newTaskSubtypeName:string, newTimePeriod:string, newTimeValue:string):Promise<void>{
+        await this.editTaskSubTypeButton(subtypeName).click();
+        await this.taskSubTypeNameFieldForEdit.fill(newTaskSubtypeName);
+        await this.timeMetric.click();
+        await this.timePeriod(newTimePeriod).click();
+        await this.timeAmountValue.fill(newTimeValue)
+        await this.updateTaskSubtypeButton.click()
+    }
+
+    async  deleteSubtype(typeName:string, subtypeNameForDeletion:string):Promise<void>{
+        await this.selectTaskType(typeName).click();
+        await this.deleteTaskSubypeButton(subtypeNameForDeletion).click();
+        await this.confirmDeleteButton.click();
+    }
+
     async taskTypeDeletion (taskTypeNameForDeletion:string):Promise<void>{
         await this.deleteTaskTypeButton(taskTypeNameForDeletion).click();
         await this.confirmDeleteButton.click();
